@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=bokaforlag
+POSTGRES_USER=zstVcBkYeVXIUsmQNHsulcMCOMPKsBGo
+POSTGRES_PASSWORD=8i1YMQguqeaCeP33EYSyS5J9Sa5D78VZqGYV1CVg4uQE6NSzcjLQZw39q3NgsI4v

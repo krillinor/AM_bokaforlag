@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-5">
+    <p class="small text-muted">
+      {% if fyrri == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
+       | {% if naesta == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
+    </p>
+
+    <p class="lead">{{ bok.titill }}</p>
+    <p class="small">{% for h in bok.hofundur.all %}{% if forloop.last %}{{ h }}{% else %}{{ h }}, {% endif %}{% endfor %}</p>
+    <p class="small">{{ bok.long_lysing }}</p>
+    <p class="small">Verð: {{ bok.verd }} kr.</p>
+  </div>
+  <div class="col-7">
+    <p><img class="card-img-top" src="/media/bok{{ bok.pk }}.png" alt=""></p>
+  </div>
+</div>
+{% endblock content %}
