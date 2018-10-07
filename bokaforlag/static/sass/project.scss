@@ -8,6 +8,10 @@
 		//Variables//
 ////////////////////////////////
 
+// krilli
+$gray: #6c757d;
+$light-gray: #b1b1b1;
+
 // Alert colors
 
 $white: #fff;
@@ -35,3 +39,50 @@ $red: #b94a48;
   border-color: $dark-pink;
   color: $red;
 }
+
+
+////////////////////////////////
+		//Forsíða//
+////////////////////////////////
+body {
+  font-family: 'Nunito', sans-serif;
+}
+.navbar {
+  background-color: $white !important;
+  box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important;
+}
+.amforlag-div {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+.amforlag-logo {
+  max-width: 175px;
+  margin: 0 auto;
+}
+.forsidubok {
+  width: 15%;
+  height: 15%;
+  border: 1px solid $light-gray;
+
+  &.vinstri {
+    box-shadow: -4px 6px 15px 2px rgba(0, 0, 0, 0.125);
+  }
+  &.haegri {
+    box-shadow: 4px 6px 15px 2px rgba(0, 0, 0, 0.125);
+  }
+  &.midja {
+    box-shadow: 0px 6px 15px 2px rgba(0, 0, 0, 0.125);
+  }
+}
+
+
+////////////////////////////////
+		//Ýmislegt//
+////////////////////////////////

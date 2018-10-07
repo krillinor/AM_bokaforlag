@@ -15,9 +15,10 @@ class Hofundur(models.Model):
         return self.fornafn + ' ' + self.eftirnafn
 
 
+# NB TODO finna betri lausn
 # TODO díla við margar myndir
 def bokarmynd_path(instance, filename):
-    return f"bok{instance.pk}.png"
+    return f"mynd_{instance.titill}"
 
 class Bok(models.Model):
     titill = models.CharField("Bókartitill", max_length=255)
@@ -25,7 +26,7 @@ class Bok(models.Model):
     stutt_lysing = models.TextField("Stutt lýsing", blank=True)
     long_lysing = models.TextField("Löng lýsing")
     verd = models.PositiveIntegerField("Verð")
-    # TODO ?
+    # TODO bæta við að geti verið >1?
     mynd = models.ImageField(upload_to=bokarmynd_path, blank=True)
 
     class Meta:

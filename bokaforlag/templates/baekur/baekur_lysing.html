@@ -2,10 +2,10 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-5">
+  <div class="col-8">
     <p class="small text-muted">
-      {% if fyrri == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
-       | {% if naesta == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
+      {% if fyrri == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
+      {% if fyrri == -1 or naesta == -1 %}{% else %} | {% endif %}{% if naesta == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
     </p>
 
     <p class="lead">{{ bok.titill }}</p>
@@ -13,8 +13,8 @@
     <p class="small">{{ bok.long_lysing }}</p>
     <p class="small">Verð: {{ bok.verd }} kr.</p>
   </div>
-  <div class="col-7">
-    <p><img class="card-img-top" src="/media/bok{{ bok.pk }}.png" alt=""></p>
+  <div class="col-4">
+    <p><img style="box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2)" class="card-img-top" src="{{ bok.mynd.url }}" alt=""></p>
   </div>
 </div>
 {% endblock content %}

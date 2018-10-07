@@ -5,7 +5,11 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from bokaforlag.baekur.views import baekur_forsida
+
 urlpatterns = [
+    path("forsida", baekur_forsida, name="baekur_forsida"),
+
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",

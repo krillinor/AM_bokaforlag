@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div style="top: -200px;" class="amforlag-div">
+  <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
+  <h1 style="line-height: 0.8;" class="display-3 mt-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
+</div>
+<div class="d-flex justify-content-between">
+  <img style="margin-left: 200px;" class="forsidubok vinstri" src="{{ baekur.0.mynd.url }}" alt="">
+  <img style="margin-right: 200px;" class="forsidubok haegri" src="{{ baekur.1.mynd.url }}" alt="">
+</div>
+<div class="d-flex justify-content-between">
+  <img class="forsidubok vinstri" src="{{ baekur.2.mynd.url }}" alt="">
+  <img style="margin-top: 75px;" class="forsidubok midja" src="{{ baekur.3.mynd.url }}" alt="">
+  <img class="forsidubok haegri" src="{{ baekur.4.mynd.url }}" alt="">
+</div>
+{% endblock content %}
+
+{% comment %}
+{% block content %}
+<div class="amforlag-div">
+  <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
+  <h1 class="display-3 mt-5">AM<br>forlag</h1>
+</div>
+<div class="d-flex justify-content-between">
+<img class="forsidubok" src="{{ baekur.0.mynd.url }}" alt="">
+<img class="forsidubok" src="{{ baekur.1.mynd.url }}" alt="">
+</div>
+<div class="d-flex justify-content-between">
+<img class="forsidubok" src="{{ baekur.2.mynd.url }}" alt="">
+<img class="forsidubok" src="{{ baekur.3.mynd.url }}" alt="">
+</div>
+<div class="d-flex justify-content-center">
+<img class="forsidubok" src="{{ baekur.4.mynd.url }}" alt="">
+</div>
+{% endblock content %}
+{% endcomment %}

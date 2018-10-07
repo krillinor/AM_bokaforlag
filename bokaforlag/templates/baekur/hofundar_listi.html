@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for h in hofundar %}
-  <p><a href="{% url 'baekur:hofundar_baekur' pk=h.pk %}">{{ h }}</a></p>
-{% endfor %}
+<div class="row">
+  <p><a class="small text-muted" href="{% url 'baekur_forsida' %}">Til baka</a></p>
+</div>
+<div class="row">
+  <ul>
+    {% for h in hofundar %}
+      <li><a href="{% url 'baekur:hofundar_baekur' pk=h.pk %}">{{ h }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock content %}

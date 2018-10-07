@@ -4,7 +4,8 @@ from bokaforlag.baekur.views import (
     baekur_listi,
     baekur_lysing,
     hofundar_listi,
-    hofundar_baekur
+    hofundar_baekur,
+    baekur_forsida
 )
 
 app_name = "baekur"
