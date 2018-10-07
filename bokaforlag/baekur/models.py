@@ -3,16 +3,15 @@ from django.db import models
 
 
 class Hofundur(models.Model):
-    fornafn = models.CharField("Fornafn", max_length=255)
-    eftirnafn = models.CharField("Eftirnafn", max_length=255)
+    nafn = models.CharField("nafn", max_length=255)
 
     class Meta:
-        ordering = ("fornafn", "eftirnafn",)
+        ordering = ("nafn",)
         verbose_name = "Höfundur"
         verbose_name_plural = "Höfundar"
 
     def __str__(self):
-        return self.fornafn + ' ' + self.eftirnafn
+        return self.nafn
 
 
 # NB TODO finna betri lausn

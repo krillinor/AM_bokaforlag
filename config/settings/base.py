@@ -73,6 +73,7 @@ LOCAL_APPS = [
     'bokaforlag.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
     "bokaforlag.baekur.apps.BaekurConfig",
+    "bokaforlag.pantanir.apps.PantanirConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -242,4 +243,21 @@ SOCIALACCOUNT_ADAPTER = 'bokaforlag.users.adapters.SocialAccountAdapter'
 INSTALLED_APPS += ['compressor']
 STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 # Your stuff...
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'XXX' # Merchant ID
+BRAINTREE_PUBLIC_KEY = 'XXX' # Public Key
+BRAINTREE_PRIVATE_KEY = 'XXX' # Private key
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
 # ------------------------------------------------------------------------------

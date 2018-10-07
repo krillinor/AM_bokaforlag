@@ -58,6 +58,9 @@
               <a class="nav-link" href="{% url 'baekur:baekur_listi' %}">Bækur</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'baekur:panta_baekur' %}">Panta bækur</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">Um AM forlag</a>
             </li>
             {% if request.user.is_authenticated %}
@@ -93,7 +96,6 @@
           {% endfor %}
       {% endif %}
 
-      <div class="container-flex mt-5">
         {% block content %}
           <div class="amforlag-div">
             <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
@@ -106,7 +108,6 @@
             <p>jó</p>
           </div>
         {% endblock content %}
-      </div>
 
     </div> <!-- /container -->
 

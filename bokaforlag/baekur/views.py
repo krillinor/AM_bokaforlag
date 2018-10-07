@@ -1,12 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Bok, Hofundur
+from ..pantanir.forms import PontunForm
 
+
+
+def panta_baekur(request):
+    """Til að panta bókaknippið hans S (5 bækur)"""
+    if request.method == "GET":
+        form = PontunForm(bok="Bókaknippi")
+        ctx = {
+            "form": form,
+        }
+        return render(request, "baekur/panta_baekur.html", ctx)
+    else:
+        form = PontunForm(request.POST, bok="Bókaknippi")
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        # else:
+            # TODO
 
 
 def baekur_forsida(request):
-    # baekur = Bok.objects.filter(hofundur__fornafn="Sverrir")
-    baekur = Bok.objects.all()
+    baekur = Bok.objects.filter(hofundur__nafn="Sverrir Norland")
     ctx = {"baekur": baekur,}
     return render(request, "baekur/baekur_forsida.html", ctx)
 
