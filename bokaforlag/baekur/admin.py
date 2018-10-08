@@ -7,11 +7,22 @@ from .models import Hofundur, Bok
 class BokAdmin(admin.ModelAdmin):
     list_display = (
         "titill",
-        "hofundar",
+        "na_i_hofunda",
         "verd",
     )
 
-    def hofundar(self, obj):
+    def na_i_hofunda(self, obj):
         return ", ".join([h.nafn for h in obj.hofundur.all()])
+    na_i_hofunda.short_description = "Höfundar"
 
-admin.site.register(Hofundur)
+# admin.site.register(Hofundur)
+@admin.register(Hofundur)
+class Hofundur(admin.ModelAdmin):
+    list_display = (
+        "nafn",
+        "na_i_baekur",
+    )
+
+    def na_i_baekur(self, obj):
+        return ", ".join([b.titill for b in obj.baekur.all()])
+    na_i_baekur.short_description = "Bækur"

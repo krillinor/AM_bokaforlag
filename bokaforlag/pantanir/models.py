@@ -6,6 +6,7 @@ from django.core.validators import (
 )
 
 
+# NB TODO field fyrir reikningsnúmer?
 # TODO nota error_messages og help_text möguleika
 class Pontun(models.Model):
     STADA = (
@@ -27,8 +28,9 @@ class Pontun(models.Model):
         "Kennitala",
         max_length=255,
         validators=[
-            RegexValidator("^\d{10}$")
-        ]
+            RegexValidator("^\d{6}-\d{4}$"),
+        ],
+        help_text="Skrifaðu kennitöluna á forminu XXXXXX-XXXX."
     )
     heimilisfang = models.CharField("Heimilisfang", max_length=255)
     postnumer = models.CharField("Póstnúmer", max_length=255)
@@ -37,10 +39,7 @@ class Pontun(models.Model):
     # TODO phonenumberfield?
     simanumer = models.CharField(
         "Símanúmer",
-        max_length=255,
-        validators=[
-            RegexValidator("^\d+$")
-        ]
+        max_length=255
     )
     athugasemd = models.TextField("Athugasemd", blank=True)
     # TODO hef engar orderlines núna því bara ein vara - breyta seinna
