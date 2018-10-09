@@ -50,6 +50,7 @@ class PontunAdmin(admin.ModelAdmin):
         "nafn",
         "bok",
         "magn",
+        "verd",
         "litud_stada",
         "uppfaerd",
         "buin_til",

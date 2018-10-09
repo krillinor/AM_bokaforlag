@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row my-5">
+  <div class="col-12 col-md-5 pr-0 pr-md-3 order-2 order-md-1">
+    <div class="d-none d-md-block">
+      <p class="lead">Panta bókaknippi</p>
+      <p>
+        Hér getur þú pantað fyrsta bókaknippi AM forlags.
+        Það inniheldur fimm bækur eftir Sverri Norland.<br>
+        Verð: 5.000 kr. (ATH.: *texti um að magn: 1 = 5 bækur*)
+      </p>
+    </div>
+    <form class="" action="{% url 'pantanir:panta_bokaknippi' %}" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-outline-primary" type="submit">Senda pöntun</button>
+    </form>
+  </div>
+  <div class="col-12 col-md-7 order-1 order-md-2">
+    <div class="d-block d-md-none">
+      <p class="lead">Panta bókaknippi</p>
+      <p>
+        Hér getur þú pantað fyrsta bókaknippi AM forlags.
+        Það inniheldur fimm bækur eftir Sverri Norland.<br>
+        Verð: 5.000 kr. (ATH.: *texti um að magn: 1 = 5 bækur*)
+      </p>
+    </div>
+    <div class="row">
+      {% for b in baekur_uppi %}
+        <div class="col-4 mb-3 mt-3 mt-md-0">
+          <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}" style="color: #333333;">
+            <img style="max-width: 100%; border: 1px solid #b1b1b1; box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);" src="{{ b.mynd.url }}" alt="">
+            {% comment %}
+              <p class="font-weight-light mt-2">{{ b.titill }}</p>
+            {% endcomment %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for b in baekur_nidri %}
+        <div class="col-4 mb-3 mb-md-0">
+          <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}" style="color: #333333;">
+            <img style="max-width: 100%; border: 1px solid #b1b1b1; box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);" src="{{ b.mynd.url }}" alt="">
+            {% comment %}
+              <p class="font-weight-light mt-2">{{ b.titill }}</p>
+            {% endcomment %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

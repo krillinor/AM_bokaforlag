@@ -4,6 +4,7 @@ from django.core.validators import (
     MaxValueValidator,
     RegexValidator
 )
+from ..baekur.models import Bok
 
 
 # NB TODO field fyrir reikningsnúmer?
@@ -15,8 +16,8 @@ class Pontun(models.Model):
         ("AFGREIDD", "Afgreidd"),
     )
 
-    buin_til = models.DateTimeField("Búin til þann", auto_now_add=True)
-    uppfaerd = models.DateTimeField("Uppfærð þann", auto_now=True)
+    buin_til = models.DateTimeField("Búin til", auto_now_add=True)
+    uppfaerd = models.DateTimeField("Uppfærð", auto_now=True)
     stada = models.CharField("Staða",
                              max_length=255,
                              default="EKKI_AFGREIDD",
@@ -43,15 +44,23 @@ class Pontun(models.Model):
     )
     athugasemd = models.TextField("Athugasemd", blank=True)
     # TODO hef engar orderlines núna því bara ein vara - breyta seinna
-    bok = models.CharField("Bók", max_length=255)
+    # bok = models.CharField("Bók", max_length=255)
+    bok = models.ForeignKey(
+        Bok,
+        related_name="bok",
+        verbose_name="Bók",
+        on_delete=models.PROTECT,
+        null=True
+    )
     magn = models.PositiveIntegerField(
         "Magn",
         default=1,
         validators=[
             MinValueValidator(1),
             MaxValueValidator(99),
-        ]
+        ],
     )
+    verd = models.PositiveIntegerField("Verð", null=True)
 
     class Meta:
         ordering = ("-buin_til",)

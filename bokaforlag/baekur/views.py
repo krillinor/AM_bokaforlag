@@ -1,36 +1,21 @@
 from django.shortcuts import render, redirect
 
 from .models import Bok, Hofundur
-from ..pantanir.forms import PontunForm
+from ..pantanir.forms import PontunBokaknippiForm
 
-
-
-def panta_baekur(request):
-    """Til að panta bókaknippið hans S (5 bækur)"""
-    if request.method == "GET":
-        form = PontunForm(bok="Bókaknippi")
-        ctx = {
-            "form": form,
-        }
-        return render(request, "baekur/panta_baekur.html", ctx)
-    else:
-        form = PontunForm(request.POST, bok="Bókaknippi")
-        if form.is_valid():
-            form.save()
-            return redirect("home")
-        # else:
-            # TODO
 
 
 def baekur_forsida(request):
-    baekur = Bok.objects.filter(hofundur__nafn="Sverrir Norland")
+    baekur = (Bok.objects
+              .exclude(titill="Bókaknippi")
+              .filter(hofundur__nafn="Sverrir Norland"))
     ctx = {"baekur": baekur,}
     return render(request, "baekur/baekur_forsida.html", ctx)
 
 
 def baekur_listi(request):
-    baekur = Bok.objects.only("titill", "mynd")
-    ctx = {"baekur": baekur}
+    baekur = Bok.objects.exclude(title="Bókaknippi")
+    ctx = {"baekur": baekur,}
     return render(request, "baekur/baekur_listi.html", ctx)
 
 
@@ -68,7 +53,9 @@ def hofundar_listi(request):
 
 def hofundar_baekur(request, pk):
     hofundur = Hofundur.objects.get(pk=pk)
-    baekur = hofundur.baekur.all()
+    baekur = (hofundur.baekur
+              .all()
+              .exclude(titill="Bókaknippi"))
     ctx = {
         "hofundur": hofundur,
         "baekur": baekur,

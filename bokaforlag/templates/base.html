@@ -62,11 +62,13 @@
               <a class="nav-link" href="{% url 'baekur:hofundar_listi' %}">Höfundar</a>
             </li>
             {% endcomment %}
+            {% comment %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'baekur:baekur_listi' %}">Bækur</a>
             </li>
+            {% endcomment %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'baekur:panta_baekur' %}">Panta bækur</a>
+              <a class="nav-link" href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">Um AM forlag</a>

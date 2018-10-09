@@ -1,12 +1,11 @@
 from django.urls import path
 
-from bokaforlag.baekur.views import (
+from .views import (
     baekur_listi,
     baekur_lysing,
     hofundar_listi,
     hofundar_baekur,
-    baekur_forsida,
-    panta_baekur
+    baekur_forsida
 )
 
 app_name = "baekur"
@@ -15,5 +14,4 @@ urlpatterns = [
     path("<int:pk>", baekur_lysing, name="baekur_lysing"),
     path("hofundar", hofundar_listi, name="hofundar_listi"),
     path("hofundar/<int:pk>", hofundar_baekur, name="hofundar_baekur"),
-    path("panta", panta_baekur, name="panta_baekur"),
 ]

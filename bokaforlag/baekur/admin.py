@@ -13,7 +13,7 @@ class BokAdmin(admin.ModelAdmin):
 
     def na_i_hofunda(self, obj):
         return ", ".join([h.nafn for h in obj.hofundur.all()])
-    na_i_hofunda.short_description = "Höfundar"
+    na_i_hofunda.short_description = "Höfundur"
 
 # admin.site.register(Hofundur)
 @admin.register(Hofundur)

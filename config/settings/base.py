@@ -61,6 +61,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
+    "django.contrib.flatpages",
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',
@@ -137,6 +138,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # flatpages
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
 ]
 
 # STATIC
