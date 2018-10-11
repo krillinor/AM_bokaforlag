@@ -1,0 +1,79 @@
+{% extends "admin/base_site.html" %}
+{% block title %} Pöntun {{ pontun.id }} {{ block.super }} {% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">Heim</a> &rsaquo;
+  <a href="{% url 'admin:pantanir_pontun_changelist' %}">Pantanir</a> &rsaquo;
+  <a href="">Pöntun {{pontun.id }}</a> &rsaquo; Upplýsingar
+</div>
+{% endblock %}
+{% block content %}
+<h1>Pöntun {{ pontun.id }}</h1>
+<ul class="object-tools">
+  <li>
+    <a href="#" onclick="window.print();">Prenta pöntun</a>
+  </li>
+</ul>
+<table>
+  <tr>
+    <th>Bók</th>
+    <td>{{ pontun.bok }}</td>
+  </tr>
+  <tr>
+    <th>Magn</th>
+    <td>{{ pontun.magn }}</a></td>
+  </tr>
+  <tr>
+    <th>Verð</th>
+    <td>{{ pontun.verd }} kr.</td>
+  </tr>
+  <tr>
+    <th>Staða</th>
+    <td>{{ pontun.get_stada_display }}</td>
+  </tr>
+  <tr>
+    <th>Nafn</th>
+    <td>{{ pontun.nafn }}</td>
+  </tr>
+  <tr>
+    <th>Kennitala</th>
+    <td>{{ pontun.kennitala }}</td>
+  </tr>
+  <tr>
+    <th>Netfang</th>
+    <td>{{ pontun.netfang }}</td>
+  </tr>
+  <tr>
+    <th>Símanúmer</th>
+    <td>{{ pontun.simanumer }}</td>
+  </tr>
+  <tr>
+    <th>Heimilisfang</th>
+    <td>{{ pontun.heimilisfang }}</td>
+  </tr>
+  <tr>
+    <th>Póstnúmer</th>
+    <td>{{ pontun.postnumer }}</td>
+  </tr>
+  <tr>
+    <th>Staður</th>
+    <td>{{ pontun.stadur }}</td>
+  </tr>
+  <tr>
+    <th>Land</th>
+    <td>{{ pontun.land }}</td>
+  </tr>
+  <tr>
+    <th>Athugasemd</th>
+    <td>{{ pontun.athugasemd }}</td>
+  </tr>
+  <tr>
+    <th>Uppfærð</th>
+    <td>{{ pontun.uppfaerd }}</td>
+  </tr>
+  <tr>
+    <th>Búin til</th>
+    <td>{{ pontun.buin_til }}</td>
+  </tr>
+</table>
+{% endblock %}

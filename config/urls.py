@@ -8,6 +8,8 @@ from django.views import defaults as default_views
 from bokaforlag.baekur.views import baekur_forsida
 from django.contrib.flatpages import views as flatpages_views
 
+from bokaforlag.pantanir.views import admin_pontun_lysing
+
 urlpatterns = [
     path("forsida", baekur_forsida, name="baekur_forsida"),
 
@@ -37,6 +39,8 @@ urlpatterns = [
         {"url": "/um-am-forlag/"},
         name="um_am_forlag"
     ),
+
+    path("admin/pantanir/pontun/<int:pk>/lysing", admin_pontun_lysing, name="admin_pontun_lysing"),
 
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT

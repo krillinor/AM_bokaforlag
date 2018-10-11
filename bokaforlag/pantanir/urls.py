@@ -8,5 +8,5 @@ from .views import (
 app_name = "pantanir"
 urlpatterns = [
     path("panta", panta_bokaknippi, name="panta_bokaknippi"),
-    path("pontun_tokst", pontun_tokst, name="pontun_tokst")
+    path("pontun_tokst", pontun_tokst, name="pontun_tokst"),
 ]

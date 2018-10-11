@@ -7,7 +7,14 @@ import datetime
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
 
+from django.urls import reverse
 
+
+
+def ekki_afgreidd(modeladmin, request, queryset):
+    queryset.update(stada="EKKI_AFGREIDD",
+                    uppfaerd=datetime.datetime.now())
+ekki_afgreidd.short_description = "Merkja sem „Ekki afgreidd“"
 
 def innheimta_send(modeladmin, request, queryset):
     queryset.update(stada="INNHEIMTA_SEND",
@@ -47,10 +54,11 @@ export_to_csv.short_description = "Skrifa sem csv-skrá"
 @admin.register(Pontun)
 class PontunAdmin(admin.ModelAdmin):
     list_display = (
-        "nafn",
+        "pontun_lysing",
         "bok",
         "magn",
         "verd",
+        "nafn",
         "litud_stada",
         "uppfaerd",
         "buin_til",
@@ -58,10 +66,17 @@ class PontunAdmin(admin.ModelAdmin):
     search_fields = ("nafn",)
     list_filter = ("stada",)
     actions = [
+        ekki_afgreidd,
         innheimta_send,
         afgreidd,
         export_to_csv
     ]
+
+    def pontun_lysing(self, obj):
+        return mark_safe("<a href='{}'>Skoða</a>".format(
+            reverse("admin_pontun_lysing", args=[obj.id]))
+        )
+    pontun_lysing.short_description = "Upplýsingar"
 
     def litud_stada(self, obj):
         if obj.stada == "EKKI_AFGREIDD":
