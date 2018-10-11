@@ -5,14 +5,19 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from bokaforlag.baekur.views import baekur_forsida
+from django.contrib.flatpages import views as flatpages_views
+
 urlpatterns = [
+    path("forsida", baekur_forsida, name="baekur_forsida"),
+
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",
         TemplateView.as_view(template_name="pages/about.html"),
         name="about",
     ),
-    # Django Admin, use {% url 'admin:index' %}
+    # Django Admin, use {% url "admin:index" %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path(
@@ -22,8 +27,16 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    # path("baekur/", include("bokaforlag.baekur.urls"), namespace="baekur"),
     path("baekur/", include("bokaforlag.baekur.urls")),
+    path("pantanir/", include("bokaforlag.pantanir.urls")),
+
+    # flatpages
+    path(
+        "um-am-forlag/",
+        flatpages_views.flatpage,
+        {"url": "/um-am-forlag/"},
+        name="um_am_forlag"
+    ),
 
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT

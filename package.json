@@ -1,0 +1,26 @@
+{
+  "name": "bokaforlag",
+  "version": "0.0.1",
+  "description": "bokaforlag",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w bokaforlag/static/sass/project.scss -o bokaforlag/static/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krillinor/AM_bokaforlag.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krillinor/AM_bokaforlag/issues"
+  },
+  "homepage": "https://github.com/krillinor/AM_bokaforlag#readme",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  }
+}

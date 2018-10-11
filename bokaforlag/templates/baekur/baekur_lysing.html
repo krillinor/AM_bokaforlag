@@ -1,20 +1,27 @@
 {% extends "base.html" %}
 
+{% load markdown %}
+
 {% block content %}
-<div class="row">
-  <div class="col-5">
-    <p class="small text-muted">
-      {% if fyrri == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
-       | {% if naesta == -1 %}{% else %}<a style="color: #6c757d !important" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
-    </p>
+<div class="row mt-5">
+  <div class="col-10 col-md-6">
+    <div class="d-flex justify-content-between">
+      <p><a class="small text-muted" href="{% url 'pantanir:panta_bokaknippi' %}">Til baka</a></p>
+      <p class="small text-muted">
+        {% if fyrri == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
+        {% if fyrri == -1 or naesta == -1 %}{% else %} | {% endif %}{% if naesta == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
+      </p>
+    </div>
 
     <p class="lead">{{ bok.titill }}</p>
     <p class="small">{% for h in bok.hofundur.all %}{% if forloop.last %}{{ h }}{% else %}{{ h }}, {% endif %}{% endfor %}</p>
-    <p class="small">{{ bok.long_lysing }}</p>
+    <p>{{ bok.long_lysing|markdown }}</p>
+    {% if bok.syna_verd %}
     <p class="small">Verð: {{ bok.verd }} kr.</p>
+    {% endif %}
   </div>
-  <div class="col-7">
-    <p><img class="card-img-top" src="/media/bok{{ bok.pk }}.png" alt=""></p>
+  <div class="col-10 col-md-4">
+    <p><img style="border: 1px solid #b1b1b1; box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);" class="card-img-top" src="{{ bok.mynd.url }}" alt=""></p>
   </div>
 </div>
 {% endblock content %}

@@ -1,10 +1,11 @@
 from django.urls import path
 
-from bokaforlag.baekur.views import (
+from .views import (
     baekur_listi,
     baekur_lysing,
     hofundar_listi,
-    hofundar_baekur
+    hofundar_baekur,
+    baekur_forsida
 )
 
 app_name = "baekur"
