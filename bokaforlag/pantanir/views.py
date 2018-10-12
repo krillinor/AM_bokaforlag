@@ -3,6 +3,20 @@ from django.shortcuts import render, redirect
 from .models import Bok
 from ..pantanir.forms import PontunBokaknippiForm
 
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import get_object_or_404
+from .models import Pontun
+
+
+
+@staff_member_required
+def admin_pontun_lysing(request, pk):
+    pontun = get_object_or_404(Pontun, id=pk)
+    return render(
+        request,
+        "admin/pantanir/pontun/lysing.html",
+        {"pontun": pontun}
+    )
 
 
 def panta_bokaknippi(request):

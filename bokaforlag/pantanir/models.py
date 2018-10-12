@@ -47,7 +47,7 @@ class Pontun(models.Model):
     # bok = models.CharField("Bók", max_length=255)
     bok = models.ForeignKey(
         Bok,
-        related_name="bok",
+        related_name="pantanir",
         verbose_name="Bók",
         on_delete=models.PROTECT,
         null=True

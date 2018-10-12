@@ -14,14 +14,14 @@ def baekur_forsida(request):
 
 
 def baekur_listi(request):
-    baekur = Bok.objects.exclude(title="Bókaknippi")
+    baekur = Bok.objects.exclude(titill="Bókaknippi")
     ctx = {"baekur": baekur,}
     return render(request, "baekur/baekur_listi.html", ctx)
 
 
 def baekur_lysing(request, pk):
     bok = Bok.objects.get(pk=pk)
-    baekur = Bok.objects.all()
+    baekur = Bok.objects.exclude(titill="Bókaknippi")
     n_baekur = baekur.count()
     baekur_pks = [x.pk for x in baekur]
     bok_index = baekur_pks.index(pk)

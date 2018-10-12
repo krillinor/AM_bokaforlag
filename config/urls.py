@@ -8,22 +8,26 @@ from django.views import defaults as default_views
 from bokaforlag.baekur.views import baekur_forsida
 from django.contrib.flatpages import views as flatpages_views
 
+from bokaforlag.pantanir.views import admin_pontun_lysing
+
 urlpatterns = [
     path("forsida", baekur_forsida, name="baekur_forsida"),
 
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
-    ),
+    # NB tmp tók út
+    # path(
+    #     "about/",
+    #     TemplateView.as_view(template_name="pages/about.html"),
+    #     name="about",
+    # ),
     # Django Admin, use {% url "admin:index" %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path(
-        "users/",
-        include("bokaforlag.users.urls", namespace="users"),
-    ),
+    # NB tmp tók út
+    # path(
+    #     "users/",
+    #     include("bokaforlag.users.urls", namespace="users"),
+    # ),
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
@@ -37,6 +41,8 @@ urlpatterns = [
         {"url": "/um-am-forlag/"},
         name="um_am_forlag"
     ),
+
+    path("admin/pantanir/pontun/<int:pk>/lysing", admin_pontun_lysing, name="admin_pontun_lysing"),
 
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
