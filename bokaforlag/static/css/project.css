@@ -1,13 +1,3 @@
-.alert-debug {
-  background-color: #fff;
-  border-color: #d6e9c6;
-  color: #000; }
-
-.alert-error {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48; }
-
 body {
   font-family: 'Nunito', sans-serif; }
 
@@ -38,3 +28,76 @@ body {
     box-shadow: -4px 6px 15px 2px rgba(0, 0, 0, 0.125); }
   .forsidubok.haegri {
     box-shadow: 4px 6px 15px 2px rgba(0, 0, 0, 0.125); }
+
+.navbar {
+  background-color: #fff !important;
+  box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important; }
+  .navbar ul li {
+    display: inline-block;
+    margin: 0 20px; }
+  .navbar a {
+    font-size: 18px;
+    position: relative; }
+    .navbar a#nav-blar:before, .navbar a#nav-blar:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #253F8F;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem; }
+    .navbar a#nav-graenn:before, .navbar a#nav-graenn:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #40AD48;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem; }
+    .navbar a#nav-raudur:before, .navbar a#nav-raudur:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #A61E22;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem; }
+    .navbar a:before {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s; }
+    .navbar a:after {
+      opacity: 0;
+      transform: translateY(4px);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; }
+    .navbar a:hover:before, .navbar a:hover:after, .navbar a:focus:before, .navbar a:focus:after {
+      opacity: 1;
+      transform: translateY(0); }
+    .navbar a:hover:before, .navbar a:focus:before {
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; }
+    .navbar a:hover:after, .navbar a:focus:after {
+      transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s; }
+
+.alert-debug {
+  background-color: #fff;
+  border-color: #d6e9c6;
+  color: #000; }
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48; }
+
+#panta-bokaknippi img {
+  max-width: 80%;
+  border: 1px solid #b1b1b1;
+  box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);
+  transition: opacity 1s; }
+  #panta-bokaknippi img:hover {
+    opacity: 0.75; }

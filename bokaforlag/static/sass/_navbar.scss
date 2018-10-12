@@ -1,0 +1,69 @@
+@mixin nav-underline($property) {
+  // &:hover {
+  //   color: $property;
+  // }
+  &:before,
+   &:after {
+     content: '';
+     position: absolute;
+     bottom: 2px;
+     left: 0;
+     right: 0;
+     height: 2px;
+     background-color: $property;
+     margin-left: 0.5rem;
+     margin-right: 0.5rem;
+   }
+}
+
+.navbar {
+  background-color: $white !important;
+  box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important;
+
+  ul {
+    li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+  }
+  a {
+    font-size: 18px;
+    position: relative;
+    // text-transform: uppercase;
+
+     &#nav-blar {
+       @include nav-underline($nav-blar);
+     }
+     &#nav-graenn {
+       @include nav-underline($nav-graenn);
+     }
+     &#nav-raudur {
+       @include nav-underline($nav-raudur);
+     }
+
+      &:before {
+          opacity: 0;
+          transform: translateY(- $distance);
+          transition: transform 0s $easeOutBack, opacity 0s;
+      }
+      &:after {
+          opacity: 0;
+          transform: translateY($distance/2);
+          transition: transform $duration $easeOutBack, opacity $duration;
+      }
+      &:hover,
+      &:focus {
+          &:before,
+          &:after {
+              opacity: 1;
+              transform: translateY(0);
+          }
+          &:before {
+              transition: transform $duration $easeOutBack, opacity $duration;
+          }
+          &:after {
+              transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+          }
+      }
+  }
+}

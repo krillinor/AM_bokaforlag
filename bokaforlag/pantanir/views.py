@@ -25,13 +25,16 @@ def panta_bokaknippi(request):
     if request.method == "GET":
         baekur = Bok.objects.exclude(titill="Bókaknippi")
         baekur = list(baekur)
-        baekur_uppi = baekur[0:3]
-        baekur_nidri = baekur[3:5]
+        bokaknippi = Bok.objects.get(titill="Bókaknippi")
+        # baekur_uppi = baekur[0:3]
+        # baekur_nidri = baekur[3:5]
         # form = PontunBokaknippiForm(bok="Bókaknippi")
         form = PontunBokaknippiForm()
         ctx = {
-            "baekur_uppi": baekur_uppi,
-            "baekur_nidri": baekur_nidri,
+            "baekur": baekur,
+            "bokaknippi": bokaknippi,
+            # "baekur_uppi": baekur_uppi,
+            # "baekur_nidri": baekur_nidri,
             "form": form,
         }
         return render(request, "pantanir/panta_bokaknippi.html", ctx)
