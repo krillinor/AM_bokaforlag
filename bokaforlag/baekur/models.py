@@ -16,7 +16,6 @@ class Hofundur(models.Model):
         return self.nafn
 
 
-# NB TODO finna betri lausn
 # TODO díla við margar myndir
 def bokarmynd_path(instance, filename):
     return f"mynd_{instance.titill}"
@@ -50,12 +49,13 @@ class Bok(models.Model):
     def __str__(self):
         return self.titill
 
-    def save(self, *args, **kwargs):
-        try:
-            pantanir = self.pantanir.all()
-            pantanir.update(verd = self.verd * F("magn"))
-            pantanir.save()
-        # ?
-        except Exception as e:
-            print(e)
-        super(Bok, self).save(*args, **kwargs)
+    # NB maður vill ekki gera þetta
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         pantanir = self.pantanir.all()
+    #         pantanir.update(verd = self.verd * F("magn"))
+    #         pantanir.save()
+    #     # ?
+    #     except Exception as e:
+    #         print(e)
+    #     super(Bok, self).save(*args, **kwargs)

@@ -55,7 +55,13 @@
           <img style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
           <ul id="header-nav" class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'baekur_forsida' %}">Forsíða <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'baekur_forsida' %}">Forsíða <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'um_am_forlag' %}">Um AM forlag</a>
             </li>
             {% comment %}
             <li class="nav-item">
@@ -67,12 +73,8 @@
               <a class="nav-link" href="{% url 'baekur:baekur_listi' %}">Bækur</a>
             </li>
             {% endcomment %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'um_am_forlag' %}">Um AM forlag</a>
-            </li>
+            {% comment %}
+            NB tmp tók út
             {% if request.user.is_authenticated %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
@@ -92,6 +94,7 @@
                 <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Innskrá" %}</a>
               </li>
             {% endif %}
+            {% endcomment %}
           </ul>
         </div>
       </nav>

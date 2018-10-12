@@ -76,7 +76,7 @@ class PontunAdmin(admin.ModelAdmin):
         return mark_safe("<a href='{}'>Skoða</a>".format(
             reverse("admin_pontun_lysing", args=[obj.id]))
         )
-    pontun_lysing.short_description = "Upplýsingar"
+    pontun_lysing.short_description = "Allar upplýsingar"
 
     def litud_stada(self, obj):
         if obj.stada == "EKKI_AFGREIDD":
