@@ -6,7 +6,20 @@
 {% block content %}
 <div class="row mt-5">
   <div class="col-3 order-2 order-md-1">
-    <img class="forsidubok vinstri" src="{{ baekur.0.mynd.url }}" alt="">
+    {# VINSTRI HRINGEKJAN #}
+    <div class="owl-carousel owl-theme hringekja forsidubok vinstri">
+      {% for b in baekur.all %}
+        <div class="item pt-1">
+          <img src="{{ b.mynd.url }}">
+          <div class="item-lysing h-100">
+            <div class="item-lysing-innra">
+              <p>{{ b.long_lysing }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {#  #}
   </div>
   <div class="col-6 order-1 order-md-2">
     <div class="d-flex justify-content-center">
@@ -15,9 +28,28 @@
     </div>
   </div>
   <div class="col-3 order-3">
-    <img class="forsidubok haegri" src="{{ baekur.1.mynd.url }}" alt="">
+    {# HÆGRI HRINGEKJAN #}
+    <div class="owl-carousel owl-theme hringekja h-100 forsidubok haegri">
+      {% for b in baekur2.all %}
+        <div class="item h-100 pt-1">
+          <img src="{{ b.mynd.url }}">
+        </div>
+      {% endfor %}
+      {% for b in baekur1.all %}
+        <div class="item h-100 pt-1">
+          <img src="{{ b.mynd.url }}">
+          <div class="item-lysing h-100">
+            <div class="item-lysing-innra">
+              <p>{{ b.long_lysing }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {#  #}
   </div>
 </div>
+
 
 {% comment %}
 <div class="row" style="max-height: 500px;">

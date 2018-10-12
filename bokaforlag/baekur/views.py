@@ -9,7 +9,10 @@ def baekur_forsida(request):
     baekur = (Bok.objects
               .exclude(titill="Bókaknippi")
               .filter(hofundur__nafn="Sverrir Norland"))
-    ctx = {"baekur": baekur,}
+    count = 4
+    b1 = baekur.filter(id__lte=count)
+    b2 = baekur.filter(id__gte=count)
+    ctx = {"baekur": baekur, "baekur1": b1, "baekur2": b2}
     return render(request, "baekur/baekur_forsida.html", ctx)
 
 

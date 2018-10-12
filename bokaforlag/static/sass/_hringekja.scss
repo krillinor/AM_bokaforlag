@@ -1,0 +1,30 @@
+.hringekja {
+  .item {
+    .item-lysing {
+      position: absolute;
+      top: 10px; left: 0;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      padding: 20px;
+      //text-align: justify;
+      //word-break: break-all;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    img {
+      transition: opacity 0.5s ease-in-out;
+    }
+    &:hover {
+      img {
+        opacity: 0.1;
+      }
+      .item-lysing {
+        opacity: 1;
+      }
+    }
+  }
+}
