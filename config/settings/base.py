@@ -39,7 +39,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///bokaforlag'),
+    'default': env.db('DATABASE_URL',
+    default='postgres://saleor:saleor@localhost:5432/bokaforlag'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+=======
+.hringekja .item .item-lysing {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; }
+
+.hringekja .item img {
+  transition: opacity 0.5s ease-in-out; }
+
+.hringekja .item:hover img {
+  opacity: 0.1; }
+
+.hringekja .item:hover .item-lysing {
+  opacity: 1; }
+
+.alert-debug {
+  background-color: #fff;
+  border-color: #d6e9c6;
+  color: #000; }
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48; }
+
+>>>>>>> gulli
 body {
   font-family: 'Nunito', sans-serif; }
 
