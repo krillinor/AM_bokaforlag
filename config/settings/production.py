@@ -28,6 +28,8 @@ CACHES = {
         }
     }
 }
+# GULLITEST
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 
 # SECURITY
 # ------------------------------------------------------------------------------
@@ -80,9 +82,9 @@ INSTALLED_APPS += ['storages']  # noqa F405
 # STATIC
 # ------------------------
 
-STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
+#STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
 #STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-
+STATIC_URL = '/static/'
 # MEDIA
 # ------------------------------------------------------------------------------
 
@@ -101,8 +103,9 @@ class MediaRootS3Boto3Storage(S3Boto3Storage):
 
 
 # endregion
-DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3Boto3Storage'
 #MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
+MEDIA_URL = '/media/'
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
