@@ -39,8 +39,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL',
-    default='postgres://saleor:saleor@localhost:5432/bokaforlag'),
+    'default': env.db('DATABASE_URL', default='postgres:///bokaforlag'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -247,21 +246,4 @@ SOCIALACCOUNT_ADAPTER = 'bokaforlag.users.adapters.SocialAccountAdapter'
 INSTALLED_APPS += ['compressor']
 STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 # Your stuff...
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Braintree settings
-BRAINTREE_MERCHANT_ID = 'XXX' # Merchant ID
-BRAINTREE_PUBLIC_KEY = 'XXX' # Public Key
-BRAINTREE_PRIVATE_KEY = 'XXX' # Private key
-
-from braintree import Configuration, Environment
-
-Configuration.configure(
-    Environment.Sandbox,
-    BRAINTREE_MERCHANT_ID,
-    BRAINTREE_PUBLIC_KEY,
-    BRAINTREE_PRIVATE_KEY
-)
 # ------------------------------------------------------------------------------
