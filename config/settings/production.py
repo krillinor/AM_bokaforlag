@@ -88,16 +88,16 @@ STATIC_URL = '/static/'
 
 # region http://stackoverflow.com/questions/10390244/
 # Full-fledge class: https://stackoverflow.com/a/18046120/104731
-from storages.backends.s3boto3 import S3Boto3Storage  # noqa E402
+#from storages.backends.s3boto3 import S3Boto3Storage  # noqa E402
 
 
-class StaticRootS3Boto3Storage(S3Boto3Storage):
-    location = 'static'
+#class StaticRootS3Boto3Storage(S3Boto3Storage):
+#    location = 'static'
 
 
-class MediaRootS3Boto3Storage(S3Boto3Storage):
-    location = 'media'
-    file_overwrite = False
+#class MediaRootS3Boto3Storage(S3Boto3Storage):
+#    location = 'media'
+#    file_overwrite = False
 
 
 # endregion
@@ -155,7 +155,7 @@ INSTALLED_APPS += ['gunicorn']  # noqa F405
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_ENABLED
 COMPRESS_ENABLED = env.bool('COMPRESS_ENABLED', default=True)
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_STORAGE
-COMPRESS_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#COMPRESS_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # https://django-compressor.readthedocs.io/en/latest/settings/#django.conf.settings.COMPRESS_URL
 COMPRESS_URL = STATIC_URL
 
