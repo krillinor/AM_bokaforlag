@@ -248,20 +248,3 @@ INSTALLED_APPS += ['compressor']
 STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 # Your stuff...
 # ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Braintree settings
-BRAINTREE_MERCHANT_ID = 'XXX' # Merchant ID
-BRAINTREE_PUBLIC_KEY = 'XXX' # Public Key
-BRAINTREE_PRIVATE_KEY = 'XXX' # Private key
-
-from braintree import Configuration, Environment
-
-Configuration.configure(
-    Environment.Sandbox,
-    BRAINTREE_MERCHANT_ID,
-    BRAINTREE_PUBLIC_KEY,
-    BRAINTREE_PRIVATE_KEY
-)
-# ------------------------------------------------------------------------------

@@ -15,7 +15,6 @@
 // hringekja
 let $hringekja = $('.hringekja'),
     $haegri = $('.forsidubok.haegri');
-    interval = 5000;
 
 $hringekja.each(function() {
   $(this).owlCarousel({
@@ -25,15 +24,18 @@ $hringekja.each(function() {
       animateIn: 'fadeIn',
       animateOut: 'fadeOut',
       autoplay: true,
-      autoplayTimeout: interval,
+      autoplayTimeout: 5000,
       autoplayHoverPause:true,
-      dots: false
+      dots: false,
+      touchDrag: false,
+      mouseDrag: false
     });
 });
 
-let $owl = $hringekja.last();
-let autoplayDelay = 2000;
 
+// hægja á byrjunartíma seinni
+let $owl = $hringekja.last(),
+    autoplayDelay = 2000;
 if (autoplayDelay) {
    $owl.trigger('stop.owl.autoplay');
    setTimeout(function() {
