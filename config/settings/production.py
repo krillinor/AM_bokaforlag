@@ -89,8 +89,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     ('css', os.path.join(PROJECT_ROOT, 'bokaforlag', 'staticfiles', 'css')),
-    ('images', os.path.join(PROJECT_ROOT, 'saleor', 'staticfiles', 'images')),
-    ('js', os.path.join(PROJECT_ROOT, 'saleor', 'staticfiles', 'js'))
+    ('images', os.path.join(PROJECT_ROOT, 'bokaforlag', 'staticfiles', 'images')),
+    ('js', os.path.join(PROJECT_ROOT, 'bokaforlag', 'staticfiles', 'js'))
     ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
