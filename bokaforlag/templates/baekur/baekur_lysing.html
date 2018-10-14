@@ -6,7 +6,7 @@
 <div class="row mt-5">
   <div class="col-10 col-md-6">
     <div class="d-flex justify-content-between">
-      <p><a class="small text-muted" href="{% url 'pantanir:panta_bokaknippi' %}">Til baka</a></p>
+      <p class="small"><a class="text-muted" href="{% url 'pantanir:panta_bokaknippi' %}">Til baka</a></p>
       <p class="small text-muted">
         {% if fyrri == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
         {% if fyrri == -1 or naesta == -1 %}{% else %} | {% endif %}{% if naesta == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}

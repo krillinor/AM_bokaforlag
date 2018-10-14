@@ -56,14 +56,16 @@
           {% endcomment %}
           <img style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
           <ul id="header-nav" class="navbar-nav mx-auto">
+            {% url 'baekur_forsida' as forsida %}
+            {% url 'um_am_forlag' as um_am_forlag %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'baekur_forsida' %}">Forsíða <span class="sr-only">(current)</span></a>
+              <a id="nav-blar" {% if request.path == forsida %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ forsida }}">Forsíða <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
+              <a id="nav-graenn" {% if request.path != forsida and request.path != um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'um_am_forlag' %}">Um AM forlag</a>
+              <a id="nav-raudur" {% if request.path == um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ um_am_forlag }}">Um AM forlag</a>
             </li>
             {% comment %}
             <li class="nav-item">
