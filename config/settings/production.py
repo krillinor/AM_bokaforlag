@@ -2,7 +2,7 @@ from .base import *  # noqa
 from .base import env
 import os.path
 
-PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..'))
+PROJECT_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'')
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -85,12 +85,12 @@ INSTALLED_APPS += ['storages']  # noqa F405
 
 #STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
 #STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-STATIC_ROOT = os.path.join('..', '..', 'bokaforlag', 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'bokaforlag', 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    ('css', os.path.join('..', '..', 'bokaforlag', 'static', 'css')),
-    ('images', os.path.join('..', '..', 'bokaforlag', 'static', 'images')),
-    ('js', os.path.join('..', '..', 'bokaforlag', 'static', 'js'))
+    ('css', os.path.join(PROJECT_ROOT, 'bokaforlag', 'static', 'css')),
+    ('images', os.path.join(PROJECT_ROOT, 'bokaforlag', 'static', 'images')),
+    ('js', os.path.join(PROJECT_ROOT, 'bokaforlag', 'static', 'js'))
     ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
