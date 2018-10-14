@@ -37,9 +37,8 @@ USE_TZ = True
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-#default='postgres://saleor:saleor@localhost:5432/saleor'
+
 DATABASES = {
-    #'default': env.db('DATABASE_URL', default='postgres://saleor:saleor/'),
     'default': env.db('DATABASE_URL',
     default='postgres://saleor:saleor@localhost:5432/bokaforlag'),
 }
@@ -163,7 +162,7 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_ROOT = str(ROOT_DIR('media'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
 
@@ -248,4 +247,21 @@ SOCIALACCOUNT_ADAPTER = 'bokaforlag.users.adapters.SocialAccountAdapter'
 INSTALLED_APPS += ['compressor']
 STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
 # Your stuff...
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'XXX' # Merchant ID
+BRAINTREE_PUBLIC_KEY = 'XXX' # Public Key
+BRAINTREE_PRIVATE_KEY = 'XXX' # Private key
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
 # ------------------------------------------------------------------------------

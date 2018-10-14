@@ -85,7 +85,7 @@ INSTALLED_APPS += ['storages']  # noqa F405
 
 #STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
 #STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     ('css', os.path.join(PROJECT_ROOT, 'staticfiles', 'css')),
@@ -116,7 +116,7 @@ STATICFILES_FINDERS = [
 # endregion
 #DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3Boto3Storage'
 #MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'bokaforlag', 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 # TEMPLATES
