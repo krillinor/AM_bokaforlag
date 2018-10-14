@@ -176,7 +176,7 @@ COMPRESS_URL = STATIC_URL
 # ------------------------------------------------------------------------------
 # https://github.com/antonagestam/collectfast#installation
 INSTALLED_APPS = ['collectfast'] + INSTALLED_APPS  # noqa F405
-INSTALLED_APPS += ['django.contrib.staticfiles']
+#INSTALLED_APPS += ['django.contrib.staticfiles']
 #AWS_PRELOAD_METADATA = True
 
 
