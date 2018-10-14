@@ -1,5 +1,4 @@
 from django.db import models
-from markdownx.models import MarkdownxField
 from django.db.models import F
 
 

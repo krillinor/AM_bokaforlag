@@ -53,12 +53,13 @@ class Pontun(models.Model):
         null=True
     )
     magn = models.PositiveIntegerField(
-        "Magn",
+        "Fjöldi bókaknippa",
         default=1,
         validators=[
             MinValueValidator(1),
             MaxValueValidator(99),
         ],
+        help_text="Eitt bókaknippi samanstendur af fimm bókum."
     )
     verd = models.PositiveIntegerField("Verð", null=True)
 

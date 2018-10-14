@@ -28,3 +28,40 @@
     }
   }
 }
+
+.logostuff {
+  padding-top: 20vh;
+  @media (max-width: $md) {
+    padding-top: 10vh;
+  }
+}
+
+.hringekja-container {
+  position: absolute;
+  margin-top: 50px;
+  &-vinstri {
+    top: 20vh;
+    left: 15vw;
+  }
+  &-haegri {
+    top: 20vh;
+    right: 15vw;
+  }
+  @media (max-width: $md) {
+    position: static;
+  }
+}
+
+.bokamynd {
+  max-height: 300px;
+  height: 50vh;
+  width: auto!important;
+  @media (max-width: $lg) {
+    max-height: 250px;
+    height: 40vh;
+  }
+}
+
+#space {
+  height: 200px;
+}
