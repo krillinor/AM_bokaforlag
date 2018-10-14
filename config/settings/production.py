@@ -2,7 +2,7 @@ from .base import *  # noqa
 from .base import env
 import os.path
 
-PROJECT_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'')
+PROJECT_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'..')
 
 # GENERAL
 # ------------------------------------------------------------------------------
