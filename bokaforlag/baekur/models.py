@@ -17,7 +17,7 @@ class Hofundur(models.Model):
 
 # TODO díla við margar myndir
 def bokarmynd_path(instance, filename):
-    return f"mynd_{instance.titill}"
+    return f"mynd_{instance.titill}.{filename.split('.')[-1]}"
 
 class Bok(models.Model):
     titill = models.CharField(
