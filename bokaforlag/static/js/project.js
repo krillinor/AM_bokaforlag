@@ -20,6 +20,7 @@ $(() => {
   //////////////////////////////////////////////////////////////////////////////
   let $hringekja = $('.hringekja'),
       $haegri = $('.forsidubok.haegri');
+      interval = 5000;
 
   $hringekja.each(function() {
     $(this).owlCarousel({
@@ -29,14 +30,14 @@ $(() => {
         animateIn: 'fadeIn',
         animateOut: 'fadeOut',
         autoplay: true,
-        autoplayTimeout: 5000,
+        autoplayTimeout: interval,
         autoplayHoverPause:true,
-        dots: false,
+        dots: false
         // kiddi
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
-        freeDrag: false
+        // mouseDrag: false,
+        // touchDrag: false,
+        // pullDrag: false,
+        // freeDrag: false
       });
   });
 
@@ -50,12 +51,17 @@ $(() => {
      }, autoplayDelay);
   }
   function resizeBok() {
-    let $forsidubok = $(".forsidubok"),
-        $bokamynd = $(".bokamynd").first();
+    const $forsidubok = $(".forsidubok"),
+          $bokamynd = $(".bokamynd").first();
+          $lysing = $(".item-lysing");
     $forsidubok.each(function() {
       $(this).width($bokamynd.width());
     })
+    $lysing.each(function() {
+      $(this).width($bokamynd.width());
+    })
   }
+
   resizeBok();
   $(window).resize(function() {
     resizeBok();

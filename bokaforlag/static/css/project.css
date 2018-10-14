@@ -132,8 +132,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  padding: 20px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; }
 
@@ -158,20 +156,26 @@ body {
   .hringekja-container-vinstri {
     top: 20vh;
     left: 15vw; }
+    @media (max-width: 1200px) {
+      .hringekja-container-vinstri {
+        left: 5vw; } }
   .hringekja-container-haegri {
     top: 20vh;
     right: 15vw; }
+    @media (max-width: 1200px) {
+      .hringekja-container-haegri {
+        right: 5vw; } }
   @media (max-width: 768px) {
     .hringekja-container {
       position: static; } }
 
 .bokamynd {
-  max-height: 300px;
+  max-height: 400px;
   height: 50vh;
   width: auto !important; }
   @media (max-width: 992px) {
     .bokamynd {
-      max-height: 250px;
+      max-height: 300px;
       height: 40vh; } }
 
 #space {
