@@ -1,5 +1,8 @@
 from .base import *  # noqa
 from .base import env
+import os.path
+
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -82,7 +85,16 @@ INSTALLED_APPS += ['storages']  # noqa F405
 
 #STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
 #STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    ('css', os.path.join(PROJECT_ROOT, 'bokaforlag', 'staticfiles', 'css')),
+    ('images', os.path.join(PROJECT_ROOT, 'saleor', 'staticfiles', 'images')),
+    ('js', os.path.join(PROJECT_ROOT, 'saleor', 'staticfiles', 'js'))
+    ]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder']
 # MEDIA
 # ------------------------------------------------------------------------------
 
@@ -103,6 +115,7 @@ STATIC_URL = '/static/'
 # endregion
 #DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3Boto3Storage'
 #MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'bokaforlag', 'media')
 MEDIA_URL = '/media/'
 
 # TEMPLATES
@@ -163,6 +176,7 @@ COMPRESS_URL = STATIC_URL
 # ------------------------------------------------------------------------------
 # https://github.com/antonagestam/collectfast#installation
 INSTALLED_APPS = ['collectfast'] + INSTALLED_APPS  # noqa F405
+INSTALLED_APPS += ['django.contrib.staticfiles']
 #AWS_PRELOAD_METADATA = True
 
 
