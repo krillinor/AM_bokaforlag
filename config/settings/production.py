@@ -3,7 +3,8 @@ from .base import env
 import os.path
 
 PROJECT_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'..')
-
+ROOT_DIR = environ.Path(__file__) - 3  # (bokaforlag/config/settings/base.py - 3 = bokaforlag/)
+APPS_DIR = ROOT_DIR.path('bokaforlag')
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -85,13 +86,11 @@ INSTALLED_APPS += ['storages']  # noqa F405
 
 #STATICFILES_STORAGE = 'config.settings.production.StaticRootS3Boto3Storage'
 #STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    ('css', os.path.join(PROJECT_ROOT, 'staticfiles', 'css')),
-    ('images', os.path.join(PROJECT_ROOT, 'staticfiles', 'images')),
-    ('js', os.path.join(PROJECT_ROOT, 'staticfiles', 'js'))
-    ]
+    str(APPS_DIR.path('static')),
+]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -116,7 +115,7 @@ STATICFILES_FINDERS = [
 # endregion
 #DEFAULT_FILE_STORAGE = 'config.settings.production.MediaRootS3Boto3Storage'
 #MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = str(ROOT_DIR('media'))
 MEDIA_URL = '/media/'
 
 # TEMPLATES
