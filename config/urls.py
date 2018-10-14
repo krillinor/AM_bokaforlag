@@ -10,10 +10,13 @@ from django.contrib.flatpages import views as flatpages_views
 
 from bokaforlag.pantanir.views import admin_pontun_lysing
 
+from django.views.generic import RedirectView
+
 urlpatterns = [
     path("forsida", baekur_forsida, name="baekur_forsida"),
 
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    # path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("", RedirectView.as_view(url="forsida")),
     # NB tmp tók út
     # path(
     #     "about/",
