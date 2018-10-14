@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row mt-5">
+<div id="baekur-listi" class="row py-5 my-5">
   {% for b in baekur %}
-  <div class="card col-2 m-3" style="border: 0;">
-    <img class="card-img-top mt-4" style="border: 1px solid #b1b1b1; box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);" src="{{ b.mynd.url }}" alt="">
-    <div class="card-body px-0">
-      <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}" style="color: #333333;">
-        <p class="font-weight-light">{{ b.titill }}</p>
+    <div class="col-6 col-sm-4 col-md-3 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left">
+      <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
+        <img src="{{ b.mynd.url }}" alt="">
       </a>
     </div>
-  </div>
   {% endfor %}
 </div>
 {% endblock content %}

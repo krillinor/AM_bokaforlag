@@ -28,7 +28,7 @@ urlpatterns = [
     #     "users/",
     #     include("bokaforlag.users.urls", namespace="users"),
     # ),
-    path("accounts/", include("allauth.urls")),
+    # path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
     path("baekur/", include("bokaforlag.baekur.urls")),

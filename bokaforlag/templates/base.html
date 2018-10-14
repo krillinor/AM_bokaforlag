@@ -105,7 +105,7 @@
 
     </div>
 
-    <div id="content-div" class="container">
+    <div id="content-div" style="flex: 1 0 auto;" class="container">
 
       {% if messages %}
           {% for message in messages %}
@@ -114,16 +114,6 @@
       {% endif %}
 
         {% block content %}
-          <div class="amforlag-div">
-            <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
-            <h1 class="display-5 mt-5">AM<br>forlag</h1>
-          </div>
-          {% comment %}
-            Bækur S
-          {% endcomment %}
-          <div class="d-flex justify-content-between">
-            <p>jó</p>
-          </div>
         {% endblock content %}
 
     </div> <!-- /container -->

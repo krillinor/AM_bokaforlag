@@ -38,7 +38,7 @@ class PontunBokaknippiForm(ModelForm):
             ),
             Div(
                 Div("athugasemd", css_class="col-md-6"),
-                Div("magn", css_class="col-md-6"),
+                Div("magn", css_class="col-md-2"),
                 css_class="row"
             )
         )
