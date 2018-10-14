@@ -29,9 +29,9 @@ $(() => {
         animateIn: 'fadeIn',
         animateOut: 'fadeOut',
         autoplay: true,
-        autoplayTimeout: interval,
+        autoplayTimeout: 5000,
         autoplayHoverPause:true,
-        dots: false
+        dots: false,
         // kiddi
         mouseDrag: false,
         touchDrag: false,
