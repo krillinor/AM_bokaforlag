@@ -50,8 +50,18 @@ def panta_bokaknippi(request):
             form_bok.save()
             form.save_m2m()
             return redirect("pantanir:pontun_tokst")
-        # else:
-            # TODO
+        else:
+            baekur = Bok.objects.exclude(titill="Bókaknippi")
+            baekur = list(baekur)
+            bokaknippi = Bok.objects.get(titill="Bókaknippi")
+            form_error = "Athugið: Fylla þarf út í alla stjörnumerkta reiti!"
+            ctx = {
+                "baekur": baekur,
+                "bokaknippi": bokaknippi,
+                "form": form,
+                "form_error": form_error,
+            }
+            return render(request, "pantanir/panta_bokaknippi.html", ctx)
 
 def pontun_tokst(request):
     return render(request, "pantanir/pontun_tokst.html")

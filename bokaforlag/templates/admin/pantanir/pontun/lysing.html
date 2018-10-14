@@ -1,14 +1,17 @@
 {% extends "admin/base_site.html" %}
+
+{% load misc %}
+
 {% block title %} Pöntun {{ pontun.id }} {{ block.super }} {% endblock %}
 {% block breadcrumbs %}
 <div class="breadcrumbs">
   <a href="{% url 'admin:index' %}">Heim</a> &rsaquo;
   <a href="{% url 'admin:pantanir_pontun_changelist' %}">Pantanir</a> &rsaquo;
-  <a href="">Pöntun {{pontun.id }}</a> &rsaquo; Upplýsingar
+  <a href="">Pöntun ({{pontun.nafn }})</a> &rsaquo; Upplýsingar
 </div>
 {% endblock %}
 {% block content %}
-<h1>Pöntun {{ pontun.id }}</h1>
+<h1>Pöntun ({{ pontun.nafn }})</h1>
 <ul class="object-tools">
   <li>
     <a href="#" onclick="window.print();">Prenta pöntun</a>
@@ -25,7 +28,7 @@
   </tr>
   <tr>
     <th>Verð</th>
-    <td>{{ pontun.verd }} kr.</td>
+    <td>{{ pontun.verd|verd }} kr.</td>
   </tr>
   <tr>
     <th>Staða</th>

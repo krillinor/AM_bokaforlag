@@ -4,123 +4,35 @@
 
 
 {% block content %}
-<div class="row mt-5">
-  <div class="col-3 order-2 order-md-1">
+<div class="hringekjudiv container-fluid">
+
+  <div class="col-6 m-auto logostuff">
+    <div class="col-12 text-center mx-auto">
+      <img class="amforlag-logo w-75 w-md-75" src="{% static 'images/AM logo.svg' %}" alt="">
+    </div>
+    <div class="col-12 text-center mx-auto">
+      <h1 class="amforlag-texti display-4 mt-0 mt-md-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
+    </div>
+  </div>
+
+  <div class="hringekja-container hringekja-container-vinstri">
     {# VINSTRI HRINGEKJAN #}
-    <div class="owl-carousel owl-theme hringekja forsidubok vinstri">
-      {% for b in baekur.all %}
-        <div class="item pt-1">
-          <img src="{{ b.mynd.url }}">
-          <div class="item-lysing h-100">
-            <div class="item-lysing-innra">
-              <p>{{ b.long_lysing }}</p>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
+    <div class="m-auto owl-carousel owl-theme hringekja forsidubok vinstri">
+      {% include "baekur/snippets/_lysing.html" with bibbi=baekur %}
     </div>
     {#  #}
   </div>
-  <div class="col-6 order-1 order-md-2">
-    <div class="d-flex justify-content-center">
-      <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
-      <h1 style="line-height: 0.8;" class="display-3 mt-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
-    </div>
+
+<div class="d-none d-md-block hringekja-container hringekja-container-haegri">
+  {# HÆGRI HRINGEKJAN #}
+  <div class="m-auto owl-carousel owl-theme hringekja forsidubok haegri">
+    {% include "baekur/snippets/_lysing.html" with bibbi=baekur2 %}
+    {% include "baekur/snippets/_lysing.html" with bibbi=baekur1 %}
   </div>
-  <div class="col-3 order-3">
-    {# HÆGRI HRINGEKJAN #}
-    <div class="owl-carousel owl-theme hringekja h-100 forsidubok haegri dropshadow">
-      {% for b in baekur2.all %}
-        <div class="item h-100 pt-1">
-          <img src="{{ b.mynd.url }}">
-        </div>
-      {% endfor %}
-      {% for b in baekur1.all %}
-        <div class="item h-100 pt-1">
-          <img src="{{ b.mynd.url }}">
-          <div class="item-lysing h-100">
-            <div class="item-lysing-innra">
-              <p>{{ b.long_lysing }}</p>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-    {#  #}
-  </div>
+  {#  #}
 </div>
 
-
-{% comment %}
-<div class="row" style="max-height: 500px;">
-  <div class="col-6 text-center">
-      <img style="max-width: 100%; max-height: 100%;" src="{{ baekur.0.mynd.url }}" alt="">
-  </div>
-  <div class="col-6 text-center">
-      <img style="max-width: 100%; max-height: 100%;" src="{{ baekur.1.mynd.url }}" alt="">
-  </div>
 </div>
-{% endcomment %}
+
+<div id="space"></div>
 {% endblock content %}
-
-
-
-{% comment %}
-NB hugsanlega...
-{% block content %}
-<div class="amforlag-div">
-  <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
-  <h1 style="line-height: 0.8;" class="display-3 mt-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
-</div>
-<div class="row d-flex justify-content-between" style="max-height: 500px;">
-  <div class="col-3">
-      <img style="max-width: 100%; max-height: 100%;" src="{{ baekur.0.mynd.url }}" alt="">
-  <div class="col-3">
-      <img style="max-width: 100%; max-height: 100%;" src="{{ baekur.1.mynd.url }}" alt="">
-  </div>
-</div>
-{% endblock content %}
-{% endcomment %}
-
-
-{% comment %}
-NB gamalt - nota ef annað bregst
-{% block content %}
-<div style="top: -200px;" class="amforlag-div">
-  <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
-  <h1 style="line-height: 0.8;" class="display-3 mt-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
-</div>
-<div class="d-flex justify-content-between">
-  <img style="margin-left: 200px;" class="forsidubok vinstri" src="{{ baekur.0.mynd.url }}" alt="">
-  <img style="margin-right: 200px;" class="forsidubok haegri" src="{{ baekur.1.mynd.url }}" alt="">
-</div>
-<div class="d-flex justify-content-between">
-  <img class="forsidubok vinstri" src="{{ baekur.2.mynd.url }}" alt="">
-  <img style="margin-top: 75px;" class="forsidubok midja" src="{{ baekur.3.mynd.url }}" alt="">
-  <img class="forsidubok haegri" src="{{ baekur.4.mynd.url }}" alt="">
-</div>
-{% endblock content %}
-{% endcomment %}
-
-
-{% comment %}
-  NB experimental
-  {% block content %}
-  <div class="row d-flex justify-content-center">
-    <div class="prufa" style="width: 200px; height: 200px;">
-      <img style="max-width: 100%; max-height: 100%;" src="{{ baekur.0.mynd.url }}" alt="">
-      <div class="overlay">
-        <div class="overlay-text">{{ baekur.0.long_lysing }}</div>
-      </div>
-    </div>
-    <img src="{% static 'images/AM logo.svg' %}" alt="">
-    <h1 style="line-height: 0.8;" class="display-3 mt-5">AM<br><span style="font-size: 2.25rem;">FORLAG</span></h1>
-    <img class="forsidubok haegri" src="{{ baekur.1.mynd.url }}" alt="">
-  </div>
-  <div class="row d-flex justify-content-between">
-    <img class="forsidubok vinstri" src="{{ baekur.2.mynd.url }}" alt="">
-    <img style="margin-top: 75px;" class="forsidubok midja" src="{{ baekur.3.mynd.url }}" alt="">
-    <img class="forsidubok haegri" src="{{ baekur.4.mynd.url }}" alt="">
-  </div>
-  {% endblock content %}
-{% endcomment %}

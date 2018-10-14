@@ -54,17 +54,17 @@
           {% comment %}
             TODO iconið hverfur í mobile mode
           {% endcomment %}
-          <img style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
+          <img class="d-none d-md-block" style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
           <ul id="header-nav" class="navbar-nav mx-auto">
             {% url 'baekur_forsida' as forsida %}
             {% url 'um_am_forlag' as um_am_forlag %}
-            <li class="nav-item">
+            <li class="nav-item mx-auto mx-md-4">
               <a id="nav-blar" {% if request.path == forsida %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ forsida }}">Forsíða <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mx-auto mx-md-4">
               <a id="nav-graenn" {% if request.path != forsida and request.path != um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mx-auto mx-md-4">
               <a id="nav-raudur" {% if request.path == um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ um_am_forlag }}">Um AM forlag</a>
             </li>
             {% comment %}
@@ -105,7 +105,7 @@
 
     </div>
 
-    <div class="container">
+    <div id="content-div" class="container">
 
       {% if messages %}
           {% for message in messages %}
@@ -116,7 +116,7 @@
         {% block content %}
           <div class="amforlag-div">
             <img class="amforlag-logo" src="{% static 'images/AM logo.svg' %}" alt="">
-            <h1 class="display-3 mt-5">AM<br>forlag</h1>
+            <h1 class="display-5 mt-5">AM<br>forlag</h1>
           </div>
           {% comment %}
             Bækur S
@@ -148,9 +148,17 @@
 
 
       <!-- place project specific Javascript in this file -->
-      <script src="{% static 'js/owl.carousel.min.js' %}"></script>      
+      <script src="{% static 'js/owl.carousel.min.js' %}"></script>
       <script src="{% static 'js/project.js' %}"></script>
 
     {% endblock javascript %}
   </body>
+  <div id="fotur" class="col-12 p-0">
+    <div>
+      <ul class="small text-muted">
+        <li>AM bókaforlag, 2018</li>
+        <li><a class="text-muted" href="mailto:AMforlag@gmail.com">AMforlag@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
 </html>

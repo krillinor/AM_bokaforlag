@@ -29,43 +29,39 @@
   }
 }
 
+.logostuff {
+  padding-top: 20vh;
+  @media (max-width: $md) {
+    padding-top: 10vh;
+  }
+}
 
-/* Drop shadow normal */
-.dropshadow:after{
-	content: '';
-	position:absolute;
-	z-index:-1;
-	bottom:-3px;
-	width:94%;
-	left:50%;
-	margin-left:-47%;
-	height:30px;
-	box-shadow: 0 16px 30px -5px rgba(0, 0, 0, 1);
-	-webkit-transform: perspective(800px) rotateY(0deg) rotateX(45deg);
-	-moz-transform: perspective(800px) rotateY(0deg) rotateX(45deg);
-	-ms-transform: perspective(800px) rotateY(0deg) rotateX(45deg);
-	-o-transform: perspective(800px) rotateY(0deg) rotateX(45deg);
-	transform: perspective(800px) rotateY(0deg) rotateX(45deg);
+.hringekja-container {
+  position: absolute;
+  margin-top: 50px;
+  &-vinstri {
+    top: 20vh;
+    left: 15vw;
+  }
+  &-haegri {
+    top: 20vh;
+    right: 15vw;
+  }
+  @media (max-width: $md) {
+    position: static;
+  }
 }
-/* Drop shadow: tilt, right*/
-.dropshadow.tr:after{
-    content: '';
-	bottom:0px;
-	width:100%;
-	left:50%;
-	margin-left:-62%;
-	-webkit-transform: perspective(300px) rotateY(-40deg) rotateX(50deg);
-	-moz-transform: perspective(300px) rotateY(-40deg) rotateX(50deg);
-	transform: perspective(300px) rotateY(-40deg) rotateX(50deg);
+
+.bokamynd {
+  max-height: 300px;
+  height: 50vh;
+  width: auto!important;
+  @media (max-width: $lg) {
+    max-height: 250px;
+    height: 40vh;
+  }
 }
-/* Drop shadow: tilt, left*/
-.dropshadow.tl:after{
-	content: '';
-	bottom:0px;
-	width:100%;
-	left:50%;
-	margin-left:-40%;
-	-webkit-transform: perspective(300px) rotateY(40deg) rotateX(50deg);
-	-moz-transform: perspective(300px) rotateY(40deg) rotateX(50deg);
-	transform: perspective(300px) rotateY(40deg) rotateX(50deg);
+
+#space {
+  height: 200px;
 }

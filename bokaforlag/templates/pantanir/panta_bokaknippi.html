@@ -1,43 +1,40 @@
 {% extends "base.html" %}
 
+{% load misc %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div id="panta-bokaknippi" class="row my-5">
-  <div class="col-12 col-md-7 mr-0 mr-md-5 pr-0 pr-md-3 order-2 order-md-1">
-    <div class="d-none d-md-block">
-      <p class="lead">Panta bókaknippi</p>
-      <p>
-        Hér getur þú pantað fyrsta bókaknippi AM forlags og fengið greiðsluseðil sendan í heimabanka.
-        Það inniheldur fimm bækur eftir Sverri Norland.<br>
-        Verð: <span id="verd">{{ bokaknippi.verd }}</span> kr. (ATH.: *texti um að magn: 1 = 5 bækur*)
-      </p>
+<div id="panta-bokaknippi" class="row mt-5" style="padding-bottom: 6rem;">
+  <div class="col-12 mr-0 mr-md-5 pr-0 pr-md-3 order-2">
+    <hr>
+    {% if form_error %}
+    <div class="row">
+      <div class="alert alert-warning text-center" role="alert">
+        {{ form_error }}
+      </div>
     </div>
-    <hr class="d-block d-md-none">
-    <form id="pontunarform" class="px-3 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post">
+    {% endif %}
+    <form id="pontunarform" class="px-3 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
-      {{ form|crispy }}
+      {% crispy form form.helper %}
       <!-- Button trigger modal -->
-      <button id="senda-pontun" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+      <button id="senda-pontun" type="button" class="btn btn-outline-primary ml-3 ml-md-0" data-toggle="modal" data-target="#exampleModal">
         Senda pöntun
       </button>
     </form>
   </div>
-  <div class="col-12 col-md-4 order-1 order-md-2">
-    <div class="d-block d-md-none">
+  <div class="col-12 order-1">
+    <div>
       <p class="lead">Panta bókaknippi</p>
       <p>
-        Hér getur þú pantað fyrsta bókaknippi AM forlags.
-        Það inniheldur fimm bækur eftir Sverri Norland.<br>
-        Verð: {{ bokaknippi.verd }} kr. (ATH.: *texti um að magn: 1 = 5 bækur*)
+        Hér má panta fyrsta bókaknippi AM forlags.<br>
+        Bókaknippið inniheldur fimm nýjar bækur eftir Sverri Norland og kostar <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.<br>
+        Fylltu út eyðublaðið hér að neðan og fáðu greiðsluseðil sendan í heimabanka.
       </p>
     </div>
     <div class="row">
-      <p class="lead d-none d-md-block">Smelltu til að sjá meira</p>
-    </div>
-    <div class="row">
       {% for b in baekur %}
-        <div class="col-4 col-md-6 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left">
+        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-auto">
           <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
             <img src="{{ b.mynd.url }}" alt="">
           </a>
@@ -57,8 +54,8 @@
         </button>
       </div>
       <div class="modal-body">
-        Panta <strong><span id="modal-magn"></span> stykki</strong> af fyrsta bókaknippi AM forlags.<br>
-        Samtals: <strong><span id="modal-heildarverd"></span> kr.</strong>
+        Panta <strong><span id="modal-magn"></span> bókaknippi</strong> AM forlags.<br>
+        Samtals: <strong><span id="modal-heildarverd"></span> þús. kr.</strong>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Til baka</button>

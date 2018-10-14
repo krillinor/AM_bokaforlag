@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
+{% load markdown %}
+
 {% block content %}
   <div class="row mt-5">
-    <p>{{ flatpage.content }}</p>
+    <p>{{ flatpage.content|markdown }}</p>
   </div>
 {% endblock content %}

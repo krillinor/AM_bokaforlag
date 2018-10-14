@@ -1,0 +1,22 @@
+#fotur {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+
+  div {
+    text-align: center;
+    background-color: #f9f9f9;
+
+    ul {
+      list-style: none;
+      padding: 1rem;
+      margin: 0;
+
+      li {
+        &:first-child {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
