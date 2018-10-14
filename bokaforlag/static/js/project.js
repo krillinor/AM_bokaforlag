@@ -50,9 +50,9 @@ $(() => {
       $owl.trigger('play.owl.autoplay');
      }, autoplayDelay);
   }
-  const $forsidubok = $(".forsidubok"),
-        $bokamynd = $(".bokamynd").first(),
-        $lysing = $(".item-lysing");
+  let $forsidubok = $(".forsidubok"),
+      $bokamynd = $(".bokamynd").first(),
+      $lysing = $(".item-lysing");
   function resizeBok() {
     $forsidubok.each(function() {
       $(this).width($bokamynd.width());
@@ -65,4 +65,5 @@ $(() => {
   $(window).resize(function() {
     resizeBok();
   })
+  $bokamynd.on('load', function() {resizeBok()});
 })
