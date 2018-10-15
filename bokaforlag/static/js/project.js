@@ -86,7 +86,7 @@ $(() => {
         resizeBok();
         clearTimeout(t);
       }
-    }, 500)
+    }, 100)
 
   }
 })
