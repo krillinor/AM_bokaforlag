@@ -74,8 +74,6 @@ $(() => {
 
     $bokamynd.on('load', function() {
       resizeBok();
-      $forsidubok.first().addClass("forsidubok vinstri");
-      $forsidubok.last().addClass("forsidubok haegri");
     });
 
     // bara til að tryggja að containerinn verði jafn stór og myndin
@@ -84,9 +82,11 @@ $(() => {
         return; // keyrum aftur
       else {
         resizeBok();
+        $forsidubok.first().addClass("forsidubok vinstri");
+        $forsidubok.last().addClass("forsidubok haegri");
         clearTimeout(t);
       }
-    }, 100)
+    }, 10)
 
   }
 })
