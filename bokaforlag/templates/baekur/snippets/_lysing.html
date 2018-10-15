@@ -2,7 +2,7 @@
 
 {% for b in bibbi.all %}
   <a class="text-dark" href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
-    <div class="item spt-1">
+    <div class="item item-{{ hlid }} spt-1">
       <img class="bokamynd" src="{{ b.mynd.url }}">
       <div class="item-lysing h-100">
         <div class="item-lysing-innra m-auto w-75">

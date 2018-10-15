@@ -17,17 +17,17 @@
 
   <div class="hringekja-container hringekja-container-vinstri">
     {# VINSTRI HRINGEKJAN #}
-    <div class="m-auto owl-carousel owl-theme hringekja forsidubok vinstri">
-      {% include "baekur/snippets/_lysing.html" with bibbi=baekur %}
+    <div class="m-auto owl-carousel owl-theme hringekja hringekja-vinstri">
+      {% include "baekur/snippets/_lysing.html" with bibbi=baekur hlid='vinstri' %}
     </div>
     {#  #}
   </div>
 
 <div class="d-none d-md-block hringekja-container hringekja-container-haegri">
   {# HÆGRI HRINGEKJAN #}
-  <div class="m-auto owl-carousel owl-theme hringekja forsidubok haegri">
-    {% include "baekur/snippets/_lysing.html" with bibbi=baekur2 %}
-    {% include "baekur/snippets/_lysing.html" with bibbi=baekur1 %}
+  <div class="m-auto owl-carousel owl-theme hringekja hringekja-haegri">
+    {% include "baekur/snippets/_lysing.html" with bibbi=baekur2 hlid='haegri' %}
+    {% include "baekur/snippets/_lysing.html" with bibbi=baekur1 hlid='haegri' %}
   </div>
   {#  #}
 </div>

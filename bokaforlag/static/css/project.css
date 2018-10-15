@@ -125,25 +125,24 @@ body {
   #baekur-listi img:hover {
     opacity: 0.75; }
 
-.hringekja .item .item-lysing {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out; }
-
-.hringekja .item img {
-  transition: opacity 0.5s ease-in-out; }
-
-.hringekja .item:hover img {
-  opacity: 0.1; }
-
-.hringekja .item:hover .item-lysing {
-  opacity: 1; }
+.hringekja {
+  max-width: 300px; }
+  .hringekja .item .item-lysing {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; }
+  .hringekja .item img {
+    transition: opacity 0.5s ease-in-out; }
+  .hringekja .item:hover img {
+    opacity: 0.1; }
+  .hringekja .item:hover .item-lysing {
+    opacity: 1; }
 
 .logostuff {
   padding-top: 20vh; }
@@ -157,12 +156,15 @@ body {
   .hringekja-container-vinstri {
     top: 20vh;
     left: 15vw; }
-    @media (max-width: 1200px) {
+    @media (max-width: 1199.98px) {
       .hringekja-container-vinstri {
         left: 5vw; } }
   .hringekja-container-haegri {
     top: 20vh;
     right: 15vw; }
+    @media (max-width: 1199.98px) {
+      .hringekja-container-haegri {
+        right: 5vw; } }
   @media (max-width: 767.98px) {
     .hringekja-container {
       position: static; } }
