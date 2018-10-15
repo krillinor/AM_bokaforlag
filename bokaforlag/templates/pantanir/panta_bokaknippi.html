@@ -6,7 +6,6 @@
 {% block content %}
 <div id="panta-bokaknippi" class="row mt-5" style="padding-bottom: 6rem;">
   <div class="col-12 mr-0 mr-md-5 pr-0 pr-md-3 order-2">
-    <hr>
     {% if form_error %}
     <div class="row">
       <div class="alert alert-warning text-center" role="alert">
@@ -14,6 +13,10 @@
       </div>
     </div>
     {% endif %}
+    <h2>Panta bókaknippi</h2>
+    <p class="py-3">
+      Fylltu inn upplýsingar um þig og við sendum greiðsluseðil í heimabanka um hæl.
+    </p>
     <form id="pontunarform" class="px-3 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
       {% crispy form form.helper %}
@@ -23,18 +26,17 @@
       </button>
     </form>
   </div>
-  <div class="col-12 order-1">
+  <div class="col-12 order-1 mb-4">
     <div>
-      <p class="lead">Panta bókaknippi</p>
-      <p>
-        Hér má panta fyrsta bókaknippi AM forlags.<br>
-        Bókaknippið inniheldur fimm nýjar bækur eftir Sverri Norland og kostar <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.<br>
-        Fylltu út eyðublaðið hér að neðan og fáðu greiðsluseðil sendan í heimabanka.
+      <h2>Bókaknippi AM forlags</h2>
+      <p class="py-3">
+        Fyrsta bókaknippi AM forlags inniheldur fimm nýjar bækur eftir Sverri Norland: þrjár skáldsögur, eitt smásagnasafn og eina ljóðabók.<br>
+        Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.
       </p>
     </div>
     <div class="row">
       {% for b in baekur %}
-        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-auto">
+        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
           <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
             <img src="{{ b.mynd.url }}" alt="">
           </a>

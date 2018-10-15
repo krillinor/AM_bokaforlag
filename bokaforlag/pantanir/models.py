@@ -58,8 +58,8 @@ class Pontun(models.Model):
         validators=[
             MinValueValidator(1),
             MaxValueValidator(99),
-        ],
-        help_text="Eitt bókaknippi samanstendur af fimm bókum."
+        ]
+        # help_text="Eitt bókaknippi samanstendur af fimm bókum."
     )
     verd = models.PositiveIntegerField("Verð", null=True)
 

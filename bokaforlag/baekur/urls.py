@@ -10,8 +10,8 @@ from .views import (
 
 app_name = "baekur"
 urlpatterns = [
-    path("", baekur_listi, name="baekur_listi"),
+    # path("", baekur_listi, name="baekur_listi"),
     path("<int:pk>", baekur_lysing, name="baekur_lysing"),
-    path("hofundar", hofundar_listi, name="hofundar_listi"),
-    path("hofundar/<int:pk>", hofundar_baekur, name="hofundar_baekur"),
+    # path("hofundar", hofundar_listi, name="hofundar_listi"),
+    # path("hofundar/<int:pk>", hofundar_baekur, name="hofundar_baekur"),
 ]

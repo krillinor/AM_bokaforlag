@@ -1,5 +1,8 @@
 body {
   font-family: 'Nunito', sans-serif;
+  position: relative;
+  margin: 0;
+  min-height: 100%;
 }
 
 // .hringekjudiv {
@@ -24,7 +27,7 @@ body {
 }
 
 .amforlag-logo {
-  max-width: 200px;
+  max-width: 125px;
   margin: 0 auto;
 }
 
@@ -33,15 +36,17 @@ body {
 
   @media (max-width: 767.98px) {
     margin-top: 0.75rem !important;
-    font-size: 2rem;
+    // font-size: 3.5rem;
     line-height: 0.9;
+    // padding: 0;
   }
 
-  span {
-    @media (max-width: 767.98px) {
-      font-size: 1.5rem !important;
-    }
-  }
+  // span {
+  //   @media (max-width: 767.98px) {
+  //     font-size: 2.5rem !important;
+  //     padding: 0;
+  //   }
+  // }
 }
 
 .forsidubok {
