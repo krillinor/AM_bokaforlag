@@ -6,6 +6,8 @@ from ..baekur.models import Bok
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Field, Fieldset, ButtonHolder, Submit
 
+from django.core.mail import send_mail
+
 
 
 
