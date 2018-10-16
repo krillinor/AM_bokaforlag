@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass -w bokaforlag/static/sass/project.scss -o bokaforlag/static/css"
+    "scss": "node-sass -w bokaforlag/static/sass/project_v2.scss -o bokaforlag/static/css"
   },
   "repository": {
     "type": "git",
