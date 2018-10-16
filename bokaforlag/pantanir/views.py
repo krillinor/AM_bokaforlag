@@ -7,6 +7,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
 from .models import Pontun
 
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 @staff_member_required
@@ -47,6 +50,15 @@ def panta_bokaknippi(request):
             verd = bok.verd
             magn = form.cleaned_data["magn"]
             form_bok.verd = verd * magn
+
+            # MAILSTUFF
+            subject = 'Thank you for registering to our site'
+            message = ' it  means a world to us '
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ['amforlag@gmail.com',]
+            send_mail(subject, message, email_from, recipient_list)
+            #            
+
             form_bok.save()
             form.save_m2m()
             return redirect("pantanir:pontun_tokst")

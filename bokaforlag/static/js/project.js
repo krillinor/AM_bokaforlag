@@ -22,7 +22,7 @@ $(() => {
       $haegri = $('.forsidubok.haegri');
       interval = 5000;
 
-  if ($hringekja) {
+  if ($hringekja.length > 0) {
     $hringekja.each(function() {
       $(this).owlCarousel({
           loop: true,
@@ -89,4 +89,18 @@ $(() => {
     }, 10)
 
   }
+
+  // kennitöludót, setja bandstrik ef 10 tölustafir
+  const $kt = $('#id_kennitala');
+  if ($kt.length > 0) {
+    $kt.focusout(function() {
+      const val = $kt.val(),
+            isnum = /^\d+$/.test(val);
+      if (isnum && val.length == 10) {
+        const newVal = val.substring(0, 6) + '-' + val.substring(6, 10);
+        $kt.val(newVal);
+      }
+    })
+  }
+
 })

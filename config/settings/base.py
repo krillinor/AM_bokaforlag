@@ -60,6 +60,7 @@ DJANGO_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.core.mail',
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
     "django.contrib.flatpages",
@@ -265,3 +266,11 @@ Configuration.configure(
     BRAINTREE_PRIVATE_KEY
 )
 # ------------------------------------------------------------------------------
+
+# GMAIL DÓT
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'amforlag@gmail.com'
+EMAIL_HOST_PASSWORD = 'AlmaNorland1'
