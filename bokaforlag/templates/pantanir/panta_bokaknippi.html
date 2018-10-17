@@ -15,7 +15,7 @@
     {% endif %}
     <h2>Panta bókaknippi</h2>
     <p class="py-3">
-      Fylltu inn upplýsingar um þig og við sendum greiðsluseðil í heimabanka um hæl.
+      Fylltu inn upplýsingar um þig til að ganga frá pöntun. Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar. Takk!
     </p>
     <form id="pontunarform" class="pr-3 pr-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
@@ -29,7 +29,7 @@
   <div class="col-12 order-1 mb-4">
     <div>
       <h2>Fyrsta bókaknippi AM forlags</h2>
-      <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
+      <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir Norland saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
       <p class="py-3">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.</p>
     </div>
     <div class="row">
