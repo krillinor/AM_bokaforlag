@@ -62,11 +62,14 @@ def panta_bokaknippi(request):
             # textinn sjálfur
             form_texti = ''
             for label, value in zip(labels, values):
-                form_texti = form_texti + str(label) + ': ' + str(value) + '\n'
-            form_texti = form_texti + 'Verð: ' + str(form_bok.verd) + 'kr + sendingarkostnaður'
+                form_texti += str(label) + ': ' + str(value) + '\n'
+            form_texti += 'Verð: ' + str(form_bok.verd) + 'kr auk sendingarkostnaðs'
             # annað
             subject = 'Kærar þakkir fyrir pöntunina!'
-            message = 'Kærar þakkir fyrir pöntunina! Þú færð glaðning í póstinum á næstu dögum.\n\nAM forlag\n\n\n\nPöntunarupplýsingar:\n\n' + form_texti
+            message = 'Kærar þakkir fyrir pöntunina! Þú færð glaðning í póstinum á næstu dögum.\n'
+            message += 'Krafa verður send í heimabankann þinn um leið og við höfum póstlagt bækurnar.\n\n'
+            message += 'AM forlag\n\n\n\n'
+            message += 'Pöntunarupplýsingar:\n\n' + form_texti
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [form.cleaned_data["netfang"], 'amforlag@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)
