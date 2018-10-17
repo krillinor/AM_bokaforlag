@@ -7,7 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
 from .models import Pontun
 
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage, send_mail
 from django.conf import settings
 
 
@@ -55,9 +55,9 @@ def panta_bokaknippi(request):
             subject = 'Thank you for registering to our site'
             message = ' it  means a world to us '
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = ['amforlag@gmail.com',]
+            recipient_list = ['gnorland93@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)
-            #            
+            #
 
             form_bok.save()
             form.save_m2m()
