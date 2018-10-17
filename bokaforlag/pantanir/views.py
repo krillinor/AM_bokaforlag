@@ -21,7 +21,6 @@ def admin_pontun_lysing(request, pk):
         {"pontun": pontun}
     )
 
-
 def panta_bokaknippi(request):
     """Til að panta bókaknippið hans S (5 bækur)"""
     bok = Bok.objects.get(titill="Bókaknippi")
@@ -52,10 +51,13 @@ def panta_bokaknippi(request):
             form_bok.verd = verd * magn
 
             # MAILSTUFF
-            subject = 'Thank you for registering to our site'
-            message = ' it  means a world to us '
+            form_texti = ''
+            for key, value in form.cleaned_data.items():
+                form_texti = form_texti + str(value) + '\n'
+            subject = 'Takk fyrir að panta!'
+            message = 'Takk fyrir að panta!' + form_texti
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = ['gnorland93@gmail.com',]
+            recipient_list = [form.cleaned_data["netfang"], 'amforlag@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)
             #
 
