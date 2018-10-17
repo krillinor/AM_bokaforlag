@@ -51,16 +51,26 @@ def panta_bokaknippi(request):
             form_bok.verd = verd * magn
 
             # MAILSTUFF
-            form_texti = ''
+            # labels:
+            labels = []
+            for field in form:
+                labels.append(str(field.label))
+            # values:
+            values = []
             for key, value in form.cleaned_data.items():
-                form_texti = form_texti + str(key) + ': ' + str(value) + '\n'
-            form_texti = form_texti + 'Verð: ' + str(form_bok.verd)
-            subject = 'Takk fyrir að panta!'
-            message = 'Takk fyrir að panta!\n\n' + 'Pöntunarupplýsingar:\n' + form_texti
+                values.append(value)
+            # textinn sjálfur
+            form_texti = ''
+            for label, value in zip(labels, values):
+                form_texti = form_texti + str(label) + ': ' + str(value) + '\n'
+            form_texti = form_texti + 'Verð: ' + str(form_bok.verd) + 'kr + sendingarkostnaður'
+            # annað
+            subject = 'Kærar þakkir fyrir pöntunina!'
+            message = 'Kærar þakkir fyrir pöntunina! Þú færð glaðning í póstinum á næstu dögum.\n\nAM forlag\n\n\n\nPöntunarupplýsingar:\n' + form_texti
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [form.cleaned_data["netfang"], 'amforlag@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)
-            #
+
 
             form_bok.save()
             form.save_m2m()
