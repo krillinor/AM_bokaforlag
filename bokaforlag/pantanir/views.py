@@ -53,9 +53,10 @@ def panta_bokaknippi(request):
             # MAILSTUFF
             form_texti = ''
             for key, value in form.cleaned_data.items():
-                form_texti = form_texti + str(value) + '\n'
+                form_texti = form_texti + str(key) + ': ' + str(value) + '\n'
+            form_texti = form_texti + 'Verð: ' + str(form_bok.verd)
             subject = 'Takk fyrir að panta!'
-            message = 'Takk fyrir að panta!' + form_texti
+            message = 'Takk fyrir að panta!\n\n' + 'Pöntunarupplýsingar:\n' + form_texti
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [form.cleaned_data["netfang"], 'amforlag@gmail.com',]
             send_mail(subject, message, email_from, recipient_list)

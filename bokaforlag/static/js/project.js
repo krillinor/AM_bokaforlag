@@ -103,4 +103,7 @@ $(() => {
     })
   }
 
+  // setja Ísland sem default land:
+  $('#id_land').val('Ísland');
+
 })
