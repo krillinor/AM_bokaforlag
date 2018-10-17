@@ -63,7 +63,7 @@ def panta_bokaknippi(request):
             form_texti = ''
             for label, value in zip(labels, values):
                 form_texti += str(label) + ': ' + str(value) + '\n'
-            form_texti += 'Verð: ' + str(form_bok.verd) + 'kr auk sendingarkostnaðs'
+            form_texti += 'Verð: ' + str(form_bok.verd) + '. kr. auk sendingarkostnaðs'
             # annað
             subject = 'Kærar þakkir fyrir pöntunina!'
             message = 'Kærar þakkir fyrir pöntunina! Þú færð glaðning í póstinum á næstu dögum.\n'
