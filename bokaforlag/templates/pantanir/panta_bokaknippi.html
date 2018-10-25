@@ -30,7 +30,8 @@
     <div>
       <h2>Fyrsta bókaknippi AM forlags</h2>
       <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir Norland saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
-      <p class="py-3">Heildarverð fyrir bókaknippi: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.</p>
+      <p class="pt-3 mb-0">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.*</p>
+      <p class="p-0 pb-3" style="font-size: 0.8rem;">Bækurnar eru einungis seldar allar fimm saman.<p>
     </div>
     <div class="row">
       {% for b in baekur %}

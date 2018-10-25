@@ -52,19 +52,19 @@ $(() => {
        }, autoplayDelay);
     }
 
-    let $forsidubok = $(".hringekja"),
-        $bokamynd = $(".bokamynd").first(),
-        $lysing = $(".item-lysing");
+    let forsidubok = $(".hringekja"),
+        bokamynd = $(".bokamynd").first(),
+        lysing = $(".item-lysing");
 
     function resizeBok() {
-      $forsidubok = $(".hringekja"),
-      $bokamynd = $(".bokamynd").first(),
-      $lysing = $(".item-lysing");
-      $forsidubok.each(function() {
-        $(this).width($bokamynd.width());
+      forsidubok = $(".hringekja"),
+      bokamynd = $(".bokamynd").first(),
+      lysing = $(".item-lysing");
+      forsidubok.each(function() {
+        $(this).width(bokamynd.width());
       })
-      $lysing.each(function() {
-        $(this).width($bokamynd.width());
+      lysing.each(function() {
+        $(this).width(bokamynd.width());
       })
     }
 
@@ -72,18 +72,18 @@ $(() => {
       resizeBok();
     })
 
-    $bokamynd.on('load', function() {
+    bokamynd.on('load', function() {
       resizeBok();
     });
 
     // bara til að tryggja að containerinn verði jafn stór og myndin
     let t = setTimeout(function() {
-      if ($bokamynd.width() < 100)
+      if (bokamynd.width() < 100)
         return; // keyrum aftur
       else {
         resizeBok();
-        $forsidubok.first().addClass("forsidubok vinstri");
-        $forsidubok.last().addClass("forsidubok haegri");
+        forsidubok.first().addClass("forsidubok vinstri");
+        forsidubok.last().addClass("forsidubok haegri");
         clearTimeout(t);
       }
     }, 10)
