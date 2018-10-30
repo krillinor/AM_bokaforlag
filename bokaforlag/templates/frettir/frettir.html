@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  {% for f in frettir_allar %}
+    <div class="frett d-flex flex-column align-items-center p-5">
+      {% include 'frettir/frett.html' with f=f %}
+    </div>
+  {% endfor %}
+<div>
+
+{% endblock content %}

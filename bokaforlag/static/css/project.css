@@ -179,6 +179,7 @@ body {
 #fotur {
   position: fixed;
   bottom: 0;
+  left: 0;
   z-index: 1000; }
   #fotur div {
     text-align: center;
@@ -189,3 +190,10 @@ body {
       margin: 0; }
       #fotur div ul li:first-child {
         margin-bottom: 0.5rem; }
+
+.frett {
+  border-bottom: 1px solid #b1b1b1; }
+  .frett-mynd {
+    height: 300px;
+    object-fit: cover;
+    object-position: 50% 30%; }

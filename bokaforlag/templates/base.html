@@ -54,14 +54,23 @@
           <ul id="header-nav" class="navbar-nav mx-auto">
             {% url 'baekur_forsida' as forsida %}
             {% url 'um_am_forlag' as um_am_forlag %}
+            {% url 'pantanir:panta_bokaknippi' as pantanir %}
+            {% url 'frettir:frettir' as frettir %}
+            {% url 'english' as english %}
             <li class="nav-item mx-auto mx-md-4">
               <a id="nav-blar" {% if request.path == forsida %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ forsida }}">Forsíða <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item mx-auto mx-md-4">
-              <a id="nav-graenn" {% if request.path != forsida and request.path != um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'pantanir:panta_bokaknippi' %}">Panta bækur</a>
+              <a id="nav-graenn" {% if request.path == pantanir %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ pantanir }}">Panta bækur</a>
             </li>
             <li class="nav-item mx-auto mx-md-4">
-              <a id="nav-raudur" {% if request.path == um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ um_am_forlag }}">Um AM forlag</a>
+              <a id="nav-raudur" {% if request.path == frettir %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ frettir }}">Fréttir</a>
+            </li>
+            <li class="nav-item mx-auto mx-md-4">
+              <a id="nav-blar" {% if request.path == um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ um_am_forlag }}">Um AM forlag</a>
+            </li>
+            <li class="nav-item mx-auto mx-md-4">
+              <a id="nav-graenn" {% if request.path == pantanir %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ english }}">English</a>
             </li>
             {% comment %}
             <li class="nav-item">

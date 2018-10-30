@@ -36,6 +36,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path("baekur/", include("bokaforlag.baekur.urls")),
     path("pantanir/", include("bokaforlag.pantanir.urls")),
+    path("frettir/", include("bokaforlag.frettir.urls")),
 
     # flatpages
     path(
@@ -43,6 +44,12 @@ urlpatterns = [
         flatpages_views.flatpage,
         {"url": "/um-am-forlag/"},
         name="um_am_forlag"
+    ),
+    path(
+        "english/",
+        flatpages_views.flatpage,
+        {"url": "/english/"},
+        name="english"
     ),
 
     path("admin/pantanir/pontun/<int:pk>/lysing", admin_pontun_lysing, name="admin_pontun_lysing"),

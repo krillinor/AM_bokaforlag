@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load markdown %}
+
+{% block content %}
+<div class="container mb-5 pb-5">
+  <div class="col-12 text-center mt-5 mx-auto">
+    <img class="amforlag-logo w-75 w-md-75" src="{% static 'images/AM logo.svg' %}" alt="">
+  </div>
+  <div class="col-12 text-center mx-auto">
+    <h1 class="amforlag-texti display-4 pt-3 pt-md-5">AM<br><span style="font-size: 2.25rem;">forlag</span></h1>
+  </div>
+  <div class="col-12 col-md-6 mt-5 px-3 mx-auto">
+    {{ flatpage.content|markdown }}
+  </div>
+</div>
+{% endblock content %}
