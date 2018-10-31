@@ -1,9 +1,16 @@
 .frett {
   border-bottom: 1px solid $light-gray;
-
   &-mynd {
+    border-radius: 10px;
     height: 300px;
     object-fit: cover;
     object-position: 50% 30%;
+  }
+  &-takki {
+    background: $light-gray;
+    border: 0;
+    &:hover {
+      background: grey;
+    }
   }
 }

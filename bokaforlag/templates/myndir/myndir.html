@@ -1,0 +1,6 @@
+{% load markdown %}
+
+{% for mynd in myndir.all %}
+  <div class="item spt-1 col-12 mynd-almenn p-0 m-auto" style="background: url('{{ mynd.mynd.url }}') no-repeat center center; background-size: contain;">
+  </div>
+{% endfor %}

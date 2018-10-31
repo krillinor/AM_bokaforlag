@@ -78,6 +78,7 @@ LOCAL_APPS = [
     "bokaforlag.baekur.apps.BaekurConfig",
     "bokaforlag.pantanir.apps.PantanirConfig",
     "bokaforlag.frettir.apps.FrettirConfig",
+    "bokaforlag.myndir.apps.MyndirConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

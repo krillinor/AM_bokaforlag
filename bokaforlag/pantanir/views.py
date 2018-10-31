@@ -10,6 +10,8 @@ from .models import Pontun
 from django.core.mail import EmailMessage, send_mail
 from django.conf import settings
 
+from ..myndir.models import Mynd
+
 
 
 @staff_member_required
@@ -28,6 +30,7 @@ def panta_bokaknippi(request):
         baekur = Bok.objects.exclude(titill="Bókaknippi")
         baekur = list(baekur)
         bokaknippi = Bok.objects.get(titill="Bókaknippi")
+        myndir = Mynd.objects.all()
         # baekur_uppi = baekur[0:3]
         # baekur_nidri = baekur[3:5]
         # form = PontunBokaknippiForm(bok="Bókaknippi")
@@ -38,6 +41,7 @@ def panta_bokaknippi(request):
             # "baekur_uppi": baekur_uppi,
             # "baekur_nidri": baekur_nidri,
             "form": form,
+            "myndir": myndir,
         }
         return render(request, "pantanir/panta_bokaknippi.html", ctx)
     else:

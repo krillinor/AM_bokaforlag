@@ -120,6 +120,12 @@ body {
   #baekur-listi img:hover {
     opacity: 0.75; }
 
+#dropdownButton {
+  background: #b1b1b1;
+  border: 0; }
+  #dropdownButton:hover {
+    background: grey; }
+
 .hringekja {
   max-width: 300px; }
   .hringekja .item .item-lysing {
@@ -176,6 +182,13 @@ body {
 #space {
   height: 200px; }
 
+#myndahringekja {
+  margin: 0 auto 70px auto !important;
+  height: 400px; }
+
+.mynd-almenn {
+  height: 400px; }
+
 #fotur {
   position: fixed;
   bottom: 0;
@@ -194,6 +207,12 @@ body {
 .frett {
   border-bottom: 1px solid #b1b1b1; }
   .frett-mynd {
+    border-radius: 10px;
     height: 300px;
     object-fit: cover;
     object-position: 50% 30%; }
+  .frett-takki {
+    background: #b1b1b1;
+    border: 0; }
+    .frett-takki:hover {
+      background: grey; }
