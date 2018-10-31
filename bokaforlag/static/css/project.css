@@ -184,13 +184,13 @@ body {
 
 #myndahringekja {
   margin: 0 auto !important;
-  height: 200px; }
+  height: 400px; }
   @media (max-width: 767.98px) {
     #myndahringekja {
       height: 200px; } }
 
 .mynd-almenn {
-  height: 200px; }
+  height: 400px; }
   @media (max-width: 767.98px) {
     .mynd-almenn {
       height: 200px; } }
