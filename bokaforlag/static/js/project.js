@@ -125,27 +125,6 @@ $(() => {
     });
   }
 
-  // bókakápur
-  const drop = $("#dropdownButton");
-  const $kapur = $("#forsidukapur");
-  drop.click(function() {
-    // ör upp og niður
-    if (!$(this).parent().hasClass("dropup")) {
-      $(this).parent().addClass("dropup");
-    } else {
-      $(this).parent().removeClass("dropup");
-    }
-    // fela / sýna
-    $kapur.toggleClass("d-none");
-    // texti á takka
-    if ($kapur.hasClass("d-none")) {
-      $(this).text("Sjá bókakápur");
-    } else {
-      $(this).text("Fela bókakápur");
-    }
-
-  });
-
   let autoplayDelay2 = 2500;
 
   if (autoplayDelay2) {

@@ -2,6 +2,7 @@
 
 {% load misc %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 <div id="panta-bokaknippi" class="row mt-5" style="padding-bottom: 8rem;">
@@ -40,13 +41,11 @@
       {% include "myndir/myndir.html" with myndir=myndir %}
     </div>
 
-    <div class="col-12 d-flex mt-3 mb-5 justify-content-center">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownButton">
-        Sjá bókakápur
-      </button>
+    <div class="col-4 col-md-2 col-xl-1 d-flex mt-0 mb-5 justify-content-center m-auto">
+      <img src="{% static 'images/AM logo.svg' %}" style="border: none;" />
     </div>
 
-    <div id="forsidukapur" class="row d-none">
+    <div id="forsidukapur" class="row">
       {% for b in baekur %}
         <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
           <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
