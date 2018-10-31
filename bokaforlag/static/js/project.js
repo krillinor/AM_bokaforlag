@@ -111,13 +111,11 @@ $(() => {
   if ($("#myndahringekja").length > 0) {
     $("#myndahringekja").owlCarousel({
       loop: true,
-      margin: 10,
       items: 1,
       animateIn: 'fadeIn',
       animateOut: 'fadeOut',
       autoplay: true,
-      autoplayTimeout: interval,
-      autoplayHoverPause: true,
+      autoplayTimeout: 5000,
       dots: false,
       // kiddi
       mouseDrag: false,
@@ -147,5 +145,15 @@ $(() => {
     }
 
   });
+
+  let autoplayDelay2 = 2500;
+
+  if (autoplayDelay2) {
+     $("#myndahringekja").trigger('stop.owl.autoplay');
+     const t = setTimeout(function() {
+      $("#myndahringekja").trigger('play.owl.autoplay');
+      clearTimeout(t);
+     }, autoplayDelay2);
+  }
 
 });
