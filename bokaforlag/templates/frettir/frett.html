@@ -1,17 +1,18 @@
-{% if f.titill %}
-  <h3 class="frett-titill text-center pb-3">{{ f.titill }}</h3>
-{% endif %}
 
-<p class="frett-texti col-12 col-sm-10 m-auto">{{ f.texti }}</p>
+  {% if f.titill %}
+    <h3 class="frett-titill text-center pb-3">{{ f.titill }}</h3>
+  {% endif %}
 
-{% if f.mynd %}
-  <img src="{{ f.mynd.url }}" class="frett-mynd col-10 col-sm-8 col-md-6 m-4">
-{% endif %}
+  <p class="frett-texti col-12 col-sm-10 m-auto text-center">{{ f.texti }}</p>
 
-{% if f.tengill %}
-<div class="p-3">
-  <a class="btn btn-dark m-auto frett-takki" href="{{ f.tengill }}" target="_blank">
-    {{ f.tengill_texti }}
-  </a>
-<div>
-{% endif %}
+  {% if f.mynd %}
+    <img src="{{ f.mynd.url }}" class="frett-mynd col-10 col-sm-8 col-md-6 m-4">
+  {% endif %}
+
+  {% if f.tengill %}
+  <div class="p-3">
+    <a class="btn btn-dark m-auto frett-takki" href="{{ f.tengill }}" target="_blank">
+      {{ f.tengill_texti }}
+    </a>
+  </div>
+  {% endif %}
