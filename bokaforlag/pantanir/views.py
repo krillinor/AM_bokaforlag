@@ -71,7 +71,7 @@ def panta_bokaknippi(request):
             # annað
             subject = 'Kærar þakkir fyrir pöntunina!'
             message = 'Kærar þakkir fyrir pöntunina! Þú færð glaðning í póstinum á næstu dögum.\n'
-            message += 'Krafa verður send í heimabankann þinn um leið og við höfum póstlagt bækurnar.\n\n'
+            message += 'Krafa verður send í heimabankann þinn, frá sérlegum fjármálastjóra AM forlags, Jóni Norland, um leið og við höfum póstlagt bækurnar.\n\n'
             message += 'AM forlag\n\n\n\n'
             message += 'Pöntunarupplýsingar:\n\n' + form_texti
             email_from = settings.EMAIL_HOST_USER
