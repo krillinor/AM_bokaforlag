@@ -11,7 +11,9 @@
 
   {% if f.tengill %}
     {% if 'youtube.com/embed' in f.tengill %}
-      <iframe width="768" height="480" src="{{ f.tengill }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="p-3">
+        <iframe width="560" height="315" src="{{ f.tengill }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     {% else %}
       <div class="p-3">
         <a class="btn btn-dark m-auto frett-takki" href="{{ f.tengill }}" target="_blank">
