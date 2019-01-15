@@ -10,7 +10,10 @@ $(() => {
   $sendapontun.on("click", () => {
     let verd = parseInt($("#verd").text().replace(".", ""));
     let magn = parseInt($("#id_magn").val());
-    let heildarverd = (verd * magn) / 1000;
+    let heildarverd = (verd * magn);
+    console.log(verd)
+    console.log(magn)
+    console.log(heildarverd)
     $modalmagn.html(magn);
     $modalheildarverd.html(heildarverd);
   })

@@ -9,13 +9,14 @@ class BokAdmin(admin.ModelAdmin):
         "titill",
         "na_i_hofunda",
         "verd",
+        "afslattur"
     )
 
     def na_i_hofunda(self, obj):
         return ", ".join([h.nafn for h in obj.hofundur.all()])
     na_i_hofunda.short_description = "Höfundur"
 
-# admin.site.register(Hofundur)
+
 @admin.register(Hofundur)
 class Hofundur(admin.ModelAdmin):
     list_display = (

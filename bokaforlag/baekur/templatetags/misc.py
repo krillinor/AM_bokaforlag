@@ -9,3 +9,8 @@ register = template.Library()
 def markdown(text):
     html = format_markdown(text, safe_mode='escape', output_format='html5')
     return mark_safe(html)
+
+
+@register.filter(name="verd")
+def verd(value):
+    return str("{:,}".format(value)).replace(",", ".")

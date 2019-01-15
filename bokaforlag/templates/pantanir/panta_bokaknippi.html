@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-{% load misc %}
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
-<div id="panta-bokaknippi" class="row mt-5" style="padding-bottom: 8rem;">
-  <div class="col-12 mr-0 mr-md-5 pr-0 pr-md-3 order-2">
+<div id="panta-bokaknippi" class="row my-5">
+  <div class="col-12 col-md-10 col-lg-8 mx-auto">
     {% if form_error %}
     <div class="row">
       <div class="alert alert-warning text-center" role="alert">
@@ -14,20 +13,26 @@
       </div>
     </div>
     {% endif %}
-
-    <h2>Panta bókaknippi</h2>
+    <h2 class="text-center">Panta bókaknippi</h2>
     <p class="py-3">
       Fylltu inn upplýsingar um þig til að ganga frá pöntun. Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar.
+      <br>
+      Bókaknippi kostar <span id="verd">{{ bokaknippi.verd_m_afslaetti }}</span> kr. auk sendingarkostnaðar.
     </p>
-    <form id="pontunarform" class="pr-3 pr-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
+    <form id="pontunarform" class="px-2 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
       {% crispy form form.helper %}
       <!-- Button trigger modal -->
-      <button id="senda-pontun" type="button" style="margin-top: 1rem;" class="btn btn-outline-primary ml-3 ml-md-0" data-toggle="modal" data-target="#exampleModal">
-        Panta
-      </button>
+      <p class="mt-4 text-center text-sm-left">
+        <button id="senda-pontun" type="button" style="font-size: 1.5rem;" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+          Staðfesta pöntun
+        </button>
+      </p>
     </form>
   </div>
+  {% comment %}
+    TODO LAGA!
+  {% endcomment %}
   <div class="col-12 order-1 mb-4">
     <div>
       <h2>Fyrsta bókaknippi AM forlags</h2>
@@ -68,7 +73,7 @@
       </div>
       <div class="modal-body">
         Panta <strong><span id="modal-magn"></span> bókaknippi</strong> AM forlags.<br>
-        Samtals: <strong><span id="modal-heildarverd"></span> þús. kr. auk sendingarkostnaðar</strong>
+        Samtals: <strong><span id="modal-heildarverd"></span> kr. auk sendingarkostnaðar.</strong>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Til baka</button>

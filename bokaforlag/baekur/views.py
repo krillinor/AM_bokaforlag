@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from .models import Bok, Hofundur
-from ..pantanir.forms import PontunBokaknippiForm
-
 
 
 def baekur_forsida(request):
@@ -16,10 +14,14 @@ def baekur_forsida(request):
     return render(request, "baekur/baekur_forsida.html", ctx)
 
 
-def baekur_listi(request):
+def bokaknippi(request):
+    bokaknippi = Bok.objects.get(titill="Bókaknippi")
     baekur = Bok.objects.exclude(titill="Bókaknippi")
-    ctx = {"baekur": baekur,}
-    return render(request, "baekur/baekur_listi.html", ctx)
+    ctx = {
+        "bokaknippi": bokaknippi,
+        "baekur": baekur,
+    }
+    return render(request, "baekur/bokaknippi.html", ctx)
 
 
 def baekur_lysing(request, pk):
@@ -49,10 +51,17 @@ def baekur_lysing(request, pk):
     return render(request, "baekur/baekur_lysing.html", ctx)
 
 
+def baekur_listi(request):
+    baekur = Bok.objects.exclude(titill="Bókaknippi")
+    ctx = {"baekur": baekur}
+    return render(request, "baekur/baekur_listi.html", ctx)
+
+
 def hofundar_listi(request):
     hofundar = Hofundur.objects.all()
     ctx = {"hofundar": hofundar}
     return render(request, "baekur/hofundar_listi.html", ctx)
+
 
 def hofundar_baekur(request, pk):
     hofundur = Hofundur.objects.get(pk=pk)

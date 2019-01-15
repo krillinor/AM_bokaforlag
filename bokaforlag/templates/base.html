@@ -37,18 +37,35 @@
 
   <body>
 
-    <div class="m-b-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light" style="box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        {% comment %}
-        <a class="navbar-brand" href="{% url 'home' %}">AM forlag</a>
-        {% endcomment %}
+    <nav class="navbar navbar-expand-md navbar-light bg-light" style="box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% comment %}
+      <a class="navbar-brand" href="{% url 'home' %}">AM forlag</a>
+      {% endcomment %}
 
-        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        {% comment %}
+          TODO iconið hverfur í mobile mode
+        {% endcomment %}
+        <img class="d-none d-md-block" style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
+        <ul id="header-nav" class="navbar-nav mx-auto">
+          {% url 'baekur_forsida' as forsida %}
+          {% url 'um_am_forlag' as um_am_forlag %}
+          <li class="nav-item mx-auto mx-md-4">
+            <a id="nav-blar" {% if request.path == forsida %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ forsida }}">Forsíða <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item mx-auto mx-md-4">
+            <a id="nav-graenn" {% if request.path != forsida and request.path != um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{% url 'baekur:bokaknippi' %}">Panta bækur</a>
+          </li>
+          <li class="nav-item mx-auto mx-md-4">
+            <a id="nav-raudur" {% if request.path == um_am_forlag %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ um_am_forlag }}">Um AM forlag</a>
+          </li>
           {% comment %}
-            TODO iconið hverfur í mobile mode
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'baekur:hofundar_listi' %}">Höfundar</a>
+          </li>
           {% endcomment %}
           <img class="d-none d-md-block" style="max-width: 50px; position: absolute; left: 25px;" src="{% static 'images/AM logo.svg' %}" alt="">
           <ul id="header-nav" class="navbar-nav mx-auto">
@@ -73,11 +90,7 @@
               <a id="nav-graenn" {% if request.path == english %}class="nav-link active"{% else %}class="nav-link"{% endif %} href="{{ english }}">English</a>
             </li>
             {% comment %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'baekur:hofundar_listi' %}">Höfundar</a>
-            </li>
-            {% endcomment %}
-            {% comment %}
+            TODO taka út?
             <li class="nav-item">
               <a class="nav-link" href="{% url 'baekur:baekur_listi' %}">Bækur</a>
             </li>
@@ -92,25 +105,23 @@
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
                 <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Útskrá" %}</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Nýskrá" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Innskrá" %}</a>
-              </li>
-            {% endif %}
-            {% endcomment %}
-          </ul>
-        </div>
-      </nav>
 
-    </div>
+          {% else %}
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Nýskrá" %}</a>
+            </li>
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Innskrá" %}</a>
+            </li>
+          {% endif %}
+          {% endcomment %}
+        </ul>
+      </div>
+    </nav>
 
-    <div id="content-div" class="container">
+    <div id="content-div" class="container" style="min-height: calc(100vh - 140px);">
 
       {% if messages %}
           {% for message in messages %}
