@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load misc %}
+
+{% block content %}
+<div id="panta-bokaknippi" class="row mt-5">
+  <div class="col-12 order-1 mb-4">
+    <div>
+      <h2 class="text-center">Fyrsta bókaknippi AM forlags</h2>
+      <p class="col-12 col-md-8 pt-3 mx-auto" style="text-align: justify;">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
+      {% if bokaknippi.afslattur > 0 %}
+      <p class="py-3 text-center lead">Nú á tilboðsverði: <span id="verd"><u>{{ bokaknippi.verd_m_afslaetti|verd }}</span> kr.</u> (áður {{ bokaknippi.verd|verd }} kr.)</p>
+      {% else %}
+      <p class="py-3 text-center lead">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.</p>
+      {% endif %}
+      <p class="pb-4 text-center">
+        <a href="{% url 'pantanir:panta_bokaknippi' %}">
+          <button class="btn btn-outline-dark" style="font-size: 1.25rem;">Panta bókaknippi</button>
+        </a>
+      </p>
+    </div>
+    <div class="row">
+      {% for b in baekur %}
+        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
+          <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
+            <img src="{{ b.mynd.url }}" alt="">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -2,31 +2,39 @@ from django.conf import settings
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.views.generic import TemplateView
-from django.views import defaults as default_views
-
-from bokaforlag.baekur.views import baekur_forsida
 from django.contrib.flatpages import views as flatpages_views
-
-from bokaforlag.pantanir.views import admin_pontun_lysing
-
+from django.views import defaults as default_views
 from django.views.generic import RedirectView
 
-urlpatterns = [
-    path("forsida", baekur_forsida, name="baekur_forsida"),
+from bokaforlag.baekur.views import baekur_forsida
+from bokaforlag.pantanir.views import admin_pontun_lysing
 
-    # path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path("", RedirectView.as_view(url="forsida")),
-    # NB tmp tók út
-    # path(
-    #     "about/",
-    #     TemplateView.as_view(template_name="pages/about.html"),
-    #     name="about",
-    # ),
+
+urlpatterns = [
+    path(
+        "forsida/",
+        baekur_forsida,
+        name="baekur_forsida"
+    ),
+
+    path(
+        "",
+        RedirectView.as_view(url="forsida")
+    ),
+
     # Django Admin, use {% url "admin:index" %}
-    path(settings.ADMIN_URL, admin.site.urls),
+    path(
+        settings.ADMIN_URL,
+        admin.site.urls
+    ),
+    path(
+        "admin/pantanir/pontun/lysing/<int:pk>",
+        admin_pontun_lysing,
+        name="admin_pontun_lysing"
+    ),
+
+    # tók út
     # User management
-    # NB tmp tók út
     # path(
     #     "users/",
     #     include("bokaforlag.users.urls", namespace="users"),
@@ -34,8 +42,15 @@ urlpatterns = [
     # path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    path("baekur/", include("bokaforlag.baekur.urls")),
-    path("pantanir/", include("bokaforlag.pantanir.urls")),
+    path(
+        "baekur/",
+        include("bokaforlag.baekur.urls")
+    ),
+
+    path(
+        "pantanir/",
+        include("bokaforlag.pantanir.urls")
+    ),
 
     # flatpages
     path(
@@ -45,10 +60,9 @@ urlpatterns = [
         name="um_am_forlag"
     ),
 
-    path("admin/pantanir/pontun/<int:pk>/lysing", admin_pontun_lysing, name="admin_pontun_lysing"),
-
 ] + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
 )
 
 if settings.DEBUG:
@@ -70,7 +84,10 @@ if settings.DEBUG:
             default_views.page_not_found,
             kwargs={"exception": Exception("Page not Found")},
         ),
-        path("500/", default_views.server_error),
+        path(
+            "500/",
+            default_views.server_error
+        ),
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar

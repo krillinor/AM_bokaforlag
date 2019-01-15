@@ -1,15 +1,10 @@
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm, Textarea, Select
 from .models import Pontun
 
-from ..baekur.models import Bok
-
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, Layout, Field, Fieldset, ButtonHolder, Submit
+from crispy_forms.layout import Div, Layout
 
 
-
-
-# NB bara gagnlegt til að panta bókaknippið - BREYTA SEINNA
 class PontunBokaknippiForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(PontunBokaknippiForm, self).__init__(*args, **kwargs)
@@ -38,18 +33,10 @@ class PontunBokaknippiForm(ModelForm):
             ),
             Div(
                 Div("athugasemd", css_class="col-md-6"),
-                Div("magn", css_class="col-md-2"),
+                Div("magn", css_class="col-md-6"),
                 css_class="row"
-            )
+            ),
         )
-        #     # Field("heimilisfang", css_class="col-9"),
-        #     # Field("postnumer", css_class="col-3"),
-        #     # Field("stadur", css_class="col-6"),
-        #     # Field("land", css_class="col-6"),
-        #     # Field("athugasemd"),
-        #     # Field("magn", css_class="col-6"),
-        # )
-
 
     class Meta:
         model = Pontun
@@ -60,6 +47,14 @@ class PontunBokaknippiForm(ModelForm):
             "bok",
             "verd",
         ]
+        MAGN_CHOICES = (
+                ('1', '1'),
+                ('2', '2'),
+                ('3', '3'),
+                ('4', '4'),
+                ('5', '5'),
+                )
         widgets = {
           "athugasemd": Textarea(attrs={'rows': 4}),
+          'magn': Select(choices=MAGN_CHOICES, attrs={'cols': 1}),
         }
