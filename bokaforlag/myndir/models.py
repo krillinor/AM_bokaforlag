@@ -1,7 +1,9 @@
 from django.db import models
 
+
 def mynd_path(instance, filename):
     return f"myndalmenn_{instance.titill}.{filename.split('.')[-1]}"
+
 
 class Mynd(models.Model):
     titill = models.CharField(max_length=128)
