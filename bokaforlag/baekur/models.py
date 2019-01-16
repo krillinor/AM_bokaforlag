@@ -1,6 +1,10 @@
+from datetime import datetime
+import os
+from unidecode import unidecode
+
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models import F
+from django.utils.text import slugify
 
 
 class Hofundur(models.Model):
@@ -15,9 +19,11 @@ class Hofundur(models.Model):
         return self.nafn
 
 
-# TODO díla við margar myndir
 def bokarmynd_path(instance, filename):
-    return f"mynd_{instance.titill}.{filename.split('.')[-1]}"
+    filename, file_extension = os.path.splitext(filename)
+    titill = instance.titill
+    titill_slug = slugify(unidecode(titill))
+    return f"bok_{titill_slug}{file_extension}"
 
 
 class Bok(models.Model):
@@ -50,6 +56,16 @@ class Bok(models.Model):
         default=0,
         blank=True
     )
+    afsl_byrjar = models.DateField(
+        "Afsláttur byrjar",
+        null=True,
+        blank=True
+    )
+    afsl_endar = models.DateField(
+        "Afsláttur endar",
+        null=True,
+        blank=True
+    )
     syna_verd = models.BooleanField(
         "Sýna verð",
         default=True
@@ -75,9 +91,32 @@ class Bok(models.Model):
                 "Afsláttur verður að vera minni en vöruverð."
             )
 
+    def er_afslattur(self):
+        if (
+            self.afslattur > 0 and
+            self.afsl_byrjar and
+            self.afsl_endar
+        ):
+            if (
+                self.afsl_byrjar
+                <= datetime.now().date()
+                <= self.afsl_endar
+            ):
+                return True
+        return False
+
     @property
     def verd_m_afslaetti(self):
-        if self.afslattur > 0:
-            nytt_verd = self.verd - self.afslattur
-            return nytt_verd
+        if (
+            self.afslattur > 0 and
+            self.afsl_byrjar and
+            self.afsl_endar
+        ):
+            if (
+                self.afsl_byrjar
+                <= datetime.now().date()
+                <= self.afsl_endar
+            ):
+                nytt_verd = self.verd - self.afslattur
+                return nytt_verd
         return self.verd

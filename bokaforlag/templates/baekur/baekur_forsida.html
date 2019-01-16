@@ -6,12 +6,12 @@
 {% block content %}
 <div class="hringekjudiv container-fluid">
 
-  <div class="col-6 m-auto px-0 px-md-5 logostuff">
+  <div class="col-12 logostuff">
     <div class="col-12 text-center mx-auto">
-      <img class="amforlag-logo w-75 w-md-75" src="{% static 'images/AM logo.svg' %}" alt="">
+      <h1 class="amforlag__texti display-2">AM<br><span>forlag</span></h1>
     </div>
-    <div class="col-12 text-center mx-auto">
-      <h1 class="amforlag-texti display-4 pt-3 pt-md-5">AM<br><span style="font-size: 2.25rem;">forlag</span></h1>
+    <div class="col-12 text-center pt-5">
+      <img class="amforlag__logo" src="{% static 'images/AM logo.svg' %}" alt="">
     </div>
   </div>
 
@@ -23,16 +23,15 @@
     {#  #}
   </div>
 
-<div class="d-none d-md-block hringekja-container hringekja-container-haegri">
-  {# HÆGRI HRINGEKJAN #}
-  <div class="m-auto owl-carousel owl-theme hringekja hringekja-haegri">
-    {% include "baekur/snippets/_lysing.html" with bibbi=baekur2 hlid='haegri' %}
-    {% include "baekur/snippets/_lysing.html" with bibbi=baekur1 hlid='haegri' %}
+  <div class="d-none d-md-block hringekja-container hringekja-container-haegri">
+    {# HÆGRI HRINGEKJAN #}
+    <div class="m-auto owl-carousel owl-theme hringekja hringekja-haegri">
+      {% include "baekur/snippets/_lysing.html" with bibbi=baekur2 hlid='haegri' %}
+      {% include "baekur/snippets/_lysing.html" with bibbi=baekur1 hlid='haegri' %}
+    </div>
+    {#  #}
   </div>
-  {#  #}
-</div>
 
 </div>
 
-<div id="space"></div>
 {% endblock content %}

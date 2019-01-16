@@ -6,7 +6,7 @@ from ..pantanir.forms import PontunBokaknippiForm
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
 from .models import Pontun
-from .utils import pontun_stadfestingarpostur
+from .utils import pontun_senda_stadfestingarpost
 
 from ..myndir.models import Mynd
 
@@ -40,12 +40,12 @@ def panta_bokaknippi(request):
             pontun.bok = Bok.objects.get(titill="Bókaknippi")
             magn = form.cleaned_data["magn"]
             pontun.verd = pontun.bok.verd_m_afslaetti * magn
-            pontun_stadfestingarpostur(pontun)
             pontun.save()
             form.save_m2m()
+            pontun_senda_stadfestingarpost(form, pontun)
             return redirect("pantanir:pontun_tokst")
         else:
-            form_error = "Athugið: Fylla þarf út í alla stjörnumerkta reiti!"
+            form_error = "Athugaðu: Fylla þarf út í alla stjörnumerkta reiti!"
             ctx = {
                 "bokaknippi": bokaknippi,
                 "form": form,

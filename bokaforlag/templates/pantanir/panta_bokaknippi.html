@@ -2,23 +2,24 @@
 
 {% load crispy_forms_tags %}
 {% load static %}
+{% load misc %}
 
 {% block content %}
 <div id="panta-bokaknippi" class="row my-5">
   <div class="col-12 col-md-10 col-lg-8 mx-auto">
+    <h2 class="text-center">Panta bókaknippi</h2>
+    <p class="py-3">
+      Bókaknippið kostar <span id="verd">{{ bokaknippi.verd_m_afslaetti }}</span> kr. auk sendingarkostnaðar.
+      Fylltu inn upplýsingar um þig til að ganga frá pöntun.
+      Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar.
+    </p>
     {% if form_error %}
     <div class="row">
-      <div class="alert alert-warning text-center" role="alert">
+      <div class="alert alert-error text-center mx-auto" role="alert">
         {{ form_error }}
       </div>
     </div>
     {% endif %}
-    <h2 class="text-center">Panta bókaknippi</h2>
-    <p class="py-3">
-      Fylltu inn upplýsingar um þig til að ganga frá pöntun. Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar.
-      <br>
-      Bókaknippi kostar <span id="verd">{{ bokaknippi.verd_m_afslaetti }}</span> kr. auk sendingarkostnaðar.
-    </p>
     <form id="pontunarform" class="px-2 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
       {% crispy form form.helper %}
@@ -29,36 +30,6 @@
         </button>
       </p>
     </form>
-  </div>
-  {% comment %}
-    TODO LAGA!
-  {% endcomment %}
-  <div class="col-12 order-1 mb-4">
-    <div>
-      <h2>Fyrsta bókaknippi AM forlags</h2>
-      <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir Norland saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
-      <p class="pt-3">Bækurnar heita „Fallegasta kynslóðin er alltaf sú sem kemur næst“, „Hið agalausa tívólí“, „Manneskjusafnið“, „Erfðaskrá á útdauðu tungumáli“ og „Heimafólk“.</p>
-      <p class="pt-3 mb-0">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.*</p>
-      <p class="p-0 pb-3" style="font-size: 0.8rem;">Bækurnar eru einungis seldar allar fimm saman.<p>
-    </div>
-    {# HRINGEKJA #}
-    <div id="myndahringekja" class="col-6 m-auto owl-carousel owl-theme p-0">
-      {% include "myndir/myndir.html" with myndir=myndir %}
-    </div>
-
-    <div class="col-4 col-md-2 col-xl-1 d-flex mt-0 mb-5 justify-content-center m-auto">
-      <img src="{% static 'images/AM logo.svg' %}" style="border: none;" />
-    </div>
-
-    <div id="forsidukapur" class="row">
-      {% for b in baekur %}
-        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
-          <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
-            <img src="{{ b.mynd.url }}" alt="">
-          </a>
-        </div>
-      {% endfor %}
-    </div>
   </div>
 </div>
 <!-- Modal -->

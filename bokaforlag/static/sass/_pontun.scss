@@ -1,12 +1,10 @@
-#panta-bokaknippi,
 #baekur-listi {
   img {
     max-width: 80%;
     border: 1px solid #b1b1b1;
-    //box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);
-    transition: opacity 1s;
+    transition: box-shadow 0.3s ease-in-out;
     &:hover {
-      opacity: 0.75;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
   }
 }

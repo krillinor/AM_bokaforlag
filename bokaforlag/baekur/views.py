@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from .models import Bok, Hofundur
+from .models import Bok
+from ..myndir.models import Mynd
 
 
 def baekur_forsida(request):
@@ -17,9 +18,11 @@ def baekur_forsida(request):
 def bokaknippi(request):
     bokaknippi = Bok.objects.get(titill="Bókaknippi")
     baekur = Bok.objects.exclude(titill="Bókaknippi")
+    myndir = Mynd.objects.all()
     ctx = {
         "bokaknippi": bokaknippi,
         "baekur": baekur,
+        "myndir": myndir,
     }
     return render(request, "baekur/bokaknippi.html", ctx)
 
@@ -49,27 +52,3 @@ def baekur_lysing(request, pk):
         "naesta": naesta,
     }
     return render(request, "baekur/baekur_lysing.html", ctx)
-
-
-def baekur_listi(request):
-    baekur = Bok.objects.exclude(titill="Bókaknippi")
-    ctx = {"baekur": baekur}
-    return render(request, "baekur/baekur_listi.html", ctx)
-
-
-def hofundar_listi(request):
-    hofundar = Hofundur.objects.all()
-    ctx = {"hofundar": hofundar}
-    return render(request, "baekur/hofundar_listi.html", ctx)
-
-
-def hofundar_baekur(request, pk):
-    hofundur = Hofundur.objects.get(pk=pk)
-    baekur = (hofundur.baekur
-              .all()
-              .exclude(titill="Bókaknippi"))
-    ctx = {
-        "hofundur": hofundur,
-        "baekur": baekur,
-    }
-    return render(request, "baekur/hofundar_baekur.html", ctx)

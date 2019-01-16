@@ -3,20 +3,15 @@ from django.conf import settings
 
 
 # MAILSTUFF
-def pontun_stadfestingarpostur(form):
-    # labels:
-    labels = []
-    for field in form:
-        labels.append(str(field.label))
-    # values:
-    values = []
-    for key, value in form.cleaned_data.items():
-        values.append(value)
+def pontun_senda_stadfestingarpost(form, pontun):
+    # formið
+    labels = [str(field.label) for field in form]
+    values = list(form.cleaned_data.values())
     # textinn sjálfur
     form_texti = ''
     for label, value in zip(labels, values):
-        form_texti += str(label) + ': ' + str(value) + '\n'
-    form_texti += 'Verð: ' + str(form.verd) + '. kr. auk sendingarkostnaðar'
+        form_texti += f'{str(label)}: {str(value)}\n'
+    form_texti += f'Verð: {str(pontun.verd)} kr. auk sendingarkostnaðar'
     # annað
     subject = 'Kærar þakkir fyrir pöntunina!'
     message = ('Kærar þakkir fyrir pöntunina! '

@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<div class="container" style="margin: 30px 0 100px 0;">
+<div class="container" style="margin: 50px 0;">
   {% for f in frettir_allar %}
-    <div class="frett d-flex flex-column align-items-center p-0 p-md-5">
+    <div class="frett d-flex flex-column align-items-center mb-5 pb-4">
       {% include 'frettir/frett.html' with f=f %}
     </div>
   {% endfor %}
