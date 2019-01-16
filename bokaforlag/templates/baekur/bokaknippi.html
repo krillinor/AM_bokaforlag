@@ -12,7 +12,7 @@
       <p class="pt-3">Bækurnar heita „Fallegasta kynslóðin er alltaf sú sem kemur næst“, „Hið agalausa tívólí“, „Manneskjusafnið“, „Erfðaskrá á útdauðu tungumáli“ og „Heimafólk“.</p>
     </div>
     {% if bokaknippi.er_afslattur %}
-    <p class="py-3 lead">Nú á tilboðsverði: <span id="verd"><u>{{ bokaknippi.verd_m_afslaetti|verd }}</span> kr.</u> (áður {{ bokaknippi.verd|verd }} kr.)*
+    <p class="py-3 lead">Á tilboðsverði í janúar: <span id="verd"><u>{{ bokaknippi.verd_m_afslaetti|verd }}</span> kr.</u> (áður {{ bokaknippi.verd|verd }} kr.)*
     {% else %}
     <p class="py-3 lead">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.*
     {% endif %}
