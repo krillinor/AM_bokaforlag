@@ -1,7 +1,16 @@
+import os
+from unidecode import unidecode
+
 from django.db import models
+from django.utils.text import slugify
+
 
 def frettamynd_path(instance, filename):
-    return f"frettamynd_{instance.titill}.{filename.split('.')[-1]}"
+    filename, file_extension = os.path.splitext(filename)
+    titill = instance.titill
+    titill_slug = slugify(unidecode(titill))
+    return f"frett_{titill_slug}{file_extension}"
+
 
 class Frett(models.Model):
     titill = models.CharField("Titill", max_length=128, blank=True, null=True)

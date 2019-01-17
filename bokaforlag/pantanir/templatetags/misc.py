@@ -1,8 +1,8 @@
-from django import template
+#from django import template
 
 
-register = template.Library()
+#register = template.Library()
 
-@register.filter(name="verd")
-def verd(value):
-    return str("{:,}".format(value)).replace(",", ".")
+#@register.filter(name="verd")
+#def verd(value):
+#    return str("{:,}".format(value)).replace(",", ".")
