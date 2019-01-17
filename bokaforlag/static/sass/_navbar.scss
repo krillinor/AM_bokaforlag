@@ -24,8 +24,16 @@
 }
 
 .navbar {
+  min-height: 60px;
   background-color: $white !important;
   box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important;
+
+  @media (max-width: 767px) {
+    .navbar-toggler {
+      border: none;
+      outline: none;
+    }
+  }
 
   ul {
     li {
@@ -59,6 +67,7 @@
           transition: transform $duration $easeOutBack, opacity $duration;
       }
       &:hover,
+      &.active
       &:focus {
           &:before,
           &:after {

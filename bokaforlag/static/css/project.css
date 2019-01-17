@@ -8,27 +8,13 @@ body {
   background-color: #fff !important;
   box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important; }
 
-.amforlag-div {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-  text-align: center; }
+.amforlag__texti {
+  line-height: 0.7; }
+  .amforlag__texti span {
+    font-size: 3rem; }
 
-.amforlag-logo {
-  max-width: 125px;
-  margin: 0 auto; }
-
-.amforlag-texti {
-  line-height: 0.75; }
-  @media (max-width: 767.98px) {
-    .amforlag-texti {
-      margin-top: 0.75rem !important;
-      line-height: 0.9; } }
+.amforlag__logo {
+  width: 75px; }
 
 .forsidubok {
   max-width: 100%;
@@ -36,8 +22,13 @@ body {
   border: 1px solid #b1b1b1; }
 
 .navbar {
+  min-height: 60px;
   background-color: #fff !important;
   box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.125) !important; }
+  @media (max-width: 767px) {
+    .navbar .navbar-toggler {
+      border: none;
+      outline: none; } }
   .navbar ul li {
     display: inline-block; }
   .navbar a {
@@ -93,12 +84,16 @@ body {
       opacity: 0;
       transform: translateY(4px);
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; }
-    .navbar a:hover:before, .navbar a:hover:after, .navbar a:focus:before, .navbar a:focus:after {
+    .navbar a:hover:before, .navbar a:hover:after,
+    .navbar a.active .navbar a:focus:before,
+    .navbar a.active .navbar a:focus:after {
       opacity: 1;
       transform: translateY(0); }
-    .navbar a:hover:before, .navbar a:focus:before {
+    .navbar a:hover:before,
+    .navbar a.active .navbar a:focus:before {
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; }
-    .navbar a:hover:after, .navbar a:focus:after {
+    .navbar a:hover:after,
+    .navbar a.active .navbar a:focus:after {
       transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s; }
 
 .alert-debug {
@@ -111,14 +106,12 @@ body {
   border-color: #eed3d7;
   color: #b94a48; }
 
-#panta-bokaknippi img,
 #baekur-listi img {
   max-width: 80%;
   border: 1px solid #b1b1b1;
-  transition: opacity 1s; }
-  #panta-bokaknippi img:hover,
+  transition: box-shadow 0.3s ease-in-out; }
   #baekur-listi img:hover {
-    opacity: 0.75; }
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
 
 #dropdownButton {
   background: #b1b1b1;
@@ -179,21 +172,21 @@ body {
       max-height: 300px;
       height: 40vh; } }
 
-#space {
-  height: 200px; }
-
 #myndahringekja {
-  margin: 0 auto 70px auto !important;
+  margin: 0 auto !important;
   height: 400px; }
+  @media (max-width: 767.98px) {
+    #myndahringekja {
+      height: 200px; } }
 
 .mynd-almenn {
   height: 400px; }
+  @media (max-width: 767.98px) {
+    .mynd-almenn {
+      height: 200px; } }
 
 #fotur {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000; }
+  height: 80px; }
   #fotur div {
     text-align: center;
     background-color: #f9f9f9; }

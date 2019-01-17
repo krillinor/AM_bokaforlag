@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load misc %}
+{% load static %}
+
+{% block content %}
+<div class="col-12 my-5">
+  <div class="text-center">
+    <h2>Fyrsta bókaknippi AM forlags</h2>
+    <div class="col-12 col-md-8 pt-3 mx-auto text-justify">
+      <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir Norland saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
+      <p class="pt-3">Bækurnar heita „Fallegasta kynslóðin er alltaf sú sem kemur næst“, „Hið agalausa tívólí“, „Manneskjusafnið“, „Erfðaskrá á útdauðu tungumáli“ og „Heimafólk“.</p>
+    </div>
+    {% if bokaknippi.er_afslattur %}
+    <p class="py-3 lead">Á tilboðsverði í janúar: <span id="verd"><u>{{ bokaknippi.verd_m_afslaetti|verd }}</span> kr.</u> (áður {{ bokaknippi.verd|verd }} kr.)*
+    {% else %}
+    <p class="py-3 lead">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.*
+    {% endif %}
+      <br>
+      <span style="font-size: 0.8rem;">*Bækurnar eru einungis seldar allar fimm saman.</span>
+    </p>
+    <p class="pb-4">
+      <a href="{% url 'pantanir:panta_bokaknippi' %}">
+        <button class="btn btn-outline-dark" style="font-size: 1.25rem;">Panta bókaknippi</button>
+      </a>
+    </p>
+  </div>
+  {# HRINGEKJA #}
+  <div id="myndahringekja" class="col-6 m-auto owl-carousel owl-theme p-0">
+    {% include "myndir/myndir.html" with myndir=myndir %}
+  </div>
+
+  <div class="col-12 text-center py-5">
+    <img style="width: 50px;" src="{% static 'images/AM logo.svg' %}" style="border: none;" />
+  </div>
+
+  <p class="lead text-center mb-4">Smelltu á bók til að skoða hana nánar.</p>
+  <div id="baekur-listi" class="row">
+    {% for b in baekur %}
+      <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
+        <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
+          <img src="{{ b.mynd.url }}" alt="">
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

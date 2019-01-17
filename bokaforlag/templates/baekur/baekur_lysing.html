@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
-{% load markdown %}
 {% load misc %}
 
 {% block content %}
-<div class="row mt-5" style="padding-bottom: 6rem;">
+<div class="row pt-5">
   <div class="col-10 col-md-5 mx-auto">
     <div class="d-flex justify-content-between">
-      <p class="small"><a class="text-muted" href="{% url 'pantanir:panta_bokaknippi' %}">Panta bókaknippi</a></p>
+      <p class="small">
+        <a class="text-muted" href="{% url 'baekur:bokaknippi' %}">Til baka</a>
+      </p>
       <p class="small text-muted">
         {% if fyrri == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=fyrri %}">Fyrri bók</a>{% endif %}
         {% if fyrri == -1 or naesta == -1 %}{% else %} | {% endif %}{% if naesta == -1 %}{% else %}<a class="text-muted" href="{% url 'baekur:baekur_lysing' pk=naesta %}">Næsta bók</a>{% endif %}
@@ -22,7 +23,7 @@
     {% endif %}
   </div>
   <div class="col-10 col-md-4 mx-auto">
-    <p><img style="border: 1px solid #b1b1b1; box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.2);" class="card-img-top" src="{{ bok.mynd.url }}" alt=""></p>
+    <p><img style="border: 1px solid #b1b1b1; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);" class="card-img-top" src="{{ bok.mynd.url }}" alt=""></p>
   </div>
 </div>
 {% endblock content %}

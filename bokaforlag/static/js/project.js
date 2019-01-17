@@ -1,4 +1,3 @@
-
 $(() => {
   //////////////////////////////////////////////////////////////////////////////
   // uppfærir heildarverð í modal í pöntun
@@ -10,7 +9,10 @@ $(() => {
   $sendapontun.on("click", () => {
     let verd = parseInt($("#verd").text().replace(".", ""));
     let magn = parseInt($("#id_magn").val());
-    let heildarverd = (verd * magn) / 1000;
+    let heildarverd = (verd * magn);
+    console.log(verd)
+    console.log(magn)
+    console.log(heildarverd)
     $modalmagn.html(magn);
     $modalheildarverd.html(heildarverd);
   })
@@ -111,13 +113,11 @@ $(() => {
   if ($("#myndahringekja").length > 0) {
     $("#myndahringekja").owlCarousel({
       loop: true,
-      margin: 10,
       items: 1,
       animateIn: 'fadeIn',
       animateOut: 'fadeOut',
       autoplay: true,
-      autoplayTimeout: interval,
-      autoplayHoverPause: true,
+      autoplayTimeout: 5000,
       dots: false,
       // kiddi
       mouseDrag: false,
@@ -127,25 +127,14 @@ $(() => {
     });
   }
 
-  // bókakápur
-  const drop = $("#dropdownButton");
-  const $kapur = $("#forsidukapur");
-  drop.click(function() {
-    // ör upp og niður
-    if (!$(this).parent().hasClass("dropup")) {
-      $(this).parent().addClass("dropup");
-    } else {
-      $(this).parent().removeClass("dropup");
-    }
-    // fela / sýna
-    $kapur.toggleClass("d-none");
-    // texti á takka
-    if ($kapur.hasClass("d-none")) {
-      $(this).text("Sjá bókakápur");
-    } else {
-      $(this).text("Fela bókakápur");
-    }
+  let autoplayDelay2 = 2500;
 
-  });
+  if (autoplayDelay2) {
+     $("#myndahringekja").trigger('stop.owl.autoplay');
+     const t = setTimeout(function() {
+      $("#myndahringekja").trigger('play.owl.autoplay');
+      clearTimeout(t);
+     }, autoplayDelay2);
+  }
 
 });

@@ -1,59 +1,35 @@
 {% extends "base.html" %}
 
-{% load misc %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% load misc %}
 
 {% block content %}
-<div id="panta-bokaknippi" class="row mt-5" style="padding-bottom: 8rem;">
-  <div class="col-12 mr-0 mr-md-5 pr-0 pr-md-3 order-2">
+<div id="panta-bokaknippi" class="row my-5">
+  <div class="col-12 col-md-10 col-lg-8 mx-auto">
+    <h2 class="text-center">Panta bókaknippi</h2>
+    <p class="py-3">
+      Bókaknippið kostar <span id="verd">{{ bokaknippi.verd_m_afslaetti }}</span> kr. auk sendingarkostnaðar.
+      Fylltu inn upplýsingar um þig til að ganga frá pöntun.
+      Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar.
+    </p>
     {% if form_error %}
     <div class="row">
-      <div class="alert alert-warning text-center" role="alert">
+      <div class="alert alert-error text-center mx-auto" role="alert">
         {{ form_error }}
       </div>
     </div>
     {% endif %}
-
-    <h2>Panta bókaknippi</h2>
-    <p class="py-3">
-      Fylltu inn upplýsingar um þig til að ganga frá pöntun. Við sendum svo greiðsluseðil í heimabanka um leið og við póstleggjum bækurnar.
-    </p>
-    <form id="pontunarform" class="pr-3 pr-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
+    <form id="pontunarform" class="px-2 px-md-0" action="{% url 'pantanir:panta_bokaknippi' %}" method="post" novalidate>
       {% csrf_token %}
       {% crispy form form.helper %}
       <!-- Button trigger modal -->
-      <button id="senda-pontun" type="button" style="margin-top: 1rem;" class="btn btn-outline-primary ml-3 ml-md-0" data-toggle="modal" data-target="#exampleModal">
-        Panta
-      </button>
+      <p class="mt-4 text-center text-sm-left">
+        <button id="senda-pontun" type="button" style="font-size: 1.5rem;" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+          Staðfesta pöntun
+        </button>
+      </p>
     </form>
-  </div>
-  <div class="col-12 order-1 mb-4">
-    <div>
-      <h2>Fyrsta bókaknippi AM forlags</h2>
-      <p class="pt-3">Í þremur skáldsögum, ljóðabók og smásagnasafni tvinnar Sverrir Norland saman marglaga ástarbréf til íslenskunnar og listarinnar – og ekki síst listsköpunar á íslensku. Sögusviðið er Evrópa og Bandaríkin og söguhetjurnar leitandi fólk, sem tilheyrir smáþjóð, talar örtungu og lifir í heimi sem verður sífellt samtengdari, rótlausari og alþjóðlegri.</p>
-      <p class="pt-3 mb-0">Verð: <span id="verd">{{ bokaknippi.verd|verd }}</span> kr.*</p>
-      <p class="p-0 pb-3" style="font-size: 0.8rem;">Bækurnar eru einungis seldar allar fimm saman.<p>
-    </div>
-    {# HRINGEKJA #}
-    <div id="myndahringekja" class="col-6 m-auto owl-carousel owl-theme p-0">
-      {% include "myndir/myndir.html" with myndir=myndir %}
-    </div>
-
-    <div class="col-12 d-flex m-3 mb-5">
-      <button class="btn btn-secondary dropdown-toggle m-auto" type="button" id="dropdownButton">
-        Sjá bókakápur
-      </button>
-    </div>
-
-    <div id="forsidukapur" class="row d-none">
-      {% for b in baekur %}
-        <div class="col-4 col-md-2 mb-3 mt-3 mt-md-0 p-0 text-center text-md-left mx-md-auto">
-          <a href="{% url 'baekur:baekur_lysing' pk=b.pk %}">
-            <img src="{{ b.mynd.url }}" alt="">
-          </a>
-        </div>
-      {% endfor %}
-    </div>
   </div>
 </div>
 <!-- Modal -->
@@ -68,7 +44,7 @@
       </div>
       <div class="modal-body">
         Panta <strong><span id="modal-magn"></span> bókaknippi</strong> AM forlags.<br>
-        Samtals: <strong><span id="modal-heildarverd"></span> þús. kr. auk sendingarkostnaðar</strong>
+        Samtals: <strong><span id="modal-heildarverd"></span> kr. auk sendingarkostnaðar.</strong>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Til baka</button>
